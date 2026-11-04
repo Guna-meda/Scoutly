@@ -1,0 +1,101 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-beat-1: var(--beat-1);
+  --color-beat-2: var(--beat-2);
+  --color-beat-3: var(--beat-3);
+  --color-action: var(--action);
+  --color-action-text: var(--action-text);
+  --color-chat-bg: var(--chat-bg);
+  --color-track: var(--track);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-line: var(--line);
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --radius-s: var(--r-s);
+  --radius-m: var(--r-m);
+  --radius-l: var(--r-l);
+  --radius-xl: var(--r-xl);
+  --radius-full: var(--r-full);
+  --ease-brand: var(--ease);
+  --max-width-content: var(--max-w);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: var(--text-body);
+  line-height: var(--lh-body);
+  font-weight: var(--weight-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* Ink-filled elements: white inner ring plus the ink outer ring */
+.on-ink:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 2px var(--action-text);
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  background: var(--action);
+  color: var(--action-text);
+  padding: 12px 16px;
+  border-radius: var(--r-full);
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* Type styles from DESIGN_SYSTEM.md section 3 */
+.display {
+  font-size: var(--text-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+  font-weight: var(--weight-display);
+}
+.h2 {
+  font-size: var(--text-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--tracking-h2);
+  font-weight: var(--weight-h2);
+}
+.lead {
+  font-size: var(--text-body-l);
+  line-height: var(--lh-body-l);
+  margin-top: 24px;
+  max-width: 40em;
+}

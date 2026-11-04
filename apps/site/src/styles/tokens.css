@@ -1,0 +1,91 @@
+/* Source of truth: docs/site/DESIGN_SYSTEM.md sections 2-4 and docs/site/MOTION.md section 1.
+   The only file allowed to contain hex values. */
+:root {
+  /* Colour (by role, not hue) */
+  --bg: #f3f0e8;
+  --surface: #ffffff;
+  --ink: #141414;
+  --ink-2: #57524c;
+  --beat-1: #d7ff3f;
+  --beat-2: #ff9ec7;
+  --beat-3: #ffffff;
+  --action: #141414;
+  --action-text: #ffffff;
+  --chat-bg: #e9e5da;
+  --track: #ddd8ca;
+  --ok: #1f7a4d;
+  --warn: #b3261e;
+  --line: #141414;
+
+  /* Type */
+  --text-display: clamp(44px, 9vw, 96px);
+  --text-h2: clamp(32px, 5vw, 44px);
+  --text-h3: 28px;
+  --text-body-l: 20px;
+  --text-body: 17px;
+  --text-ui: 15px;
+  --text-label: 12px;
+  --lh-display: 0.96;
+  --lh-h2: 1.02;
+  --lh-h3: 1.1;
+  --lh-body-l: 1.5;
+  --lh-body: 1.55;
+  --lh-ui: 1.2;
+  --lh-label: 1.2;
+  --tracking-display: -0.035em;
+  --tracking-h2: -0.03em;
+  --tracking-h3: -0.02em;
+  --tracking-body: 0;
+  --tracking-ui: 0.04em;
+  --tracking-label: 0.08em;
+  --weight-display: 700;
+  --weight-h2: 700;
+  --weight-h3: 650;
+  --weight-body: 400;
+  --weight-ui: 700;
+  --weight-label: 600;
+
+  /* Shape */
+  --outline: 2px solid var(--line);
+  --r-s: 10px;
+  --r-m: 16px;
+  --r-l: 24px;
+  --r-xl: 40px;
+  --r-full: 999px;
+
+  /* Spacing (4px base) */
+  --space: 4px;
+  --section-pad: 96px;
+  --gutter: 48px;
+  --max-w: 1180px;
+  --tap: 44px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --spring: linear(0, 0.62 18%, 1.08 40%, 0.98 65%, 1);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --dur-4: 480ms;
+  --blur: 10px;
+  --rise: 18px;
+  --stagger: 60ms;
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --section-pad: 64px;
+    --gutter: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-1: 1ms;
+    --dur-2: 1ms;
+    --dur-3: 1ms;
+    --dur-4: 1ms;
+    --blur: 0px;
+    --rise: 0px;
+  }
+}

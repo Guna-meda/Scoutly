@@ -1,0 +1,4 @@
+{
+  "_comment": "Exact matched strings (case-insensitive, whitespace-normalised) that are allowed by check-claims. Add only with owner approval.",
+  "allow": []
+}

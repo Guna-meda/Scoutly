@@ -1,0 +1,31 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "node node_modules/next/dist/bin/next start -p 3102",
+      "startServerReadyPattern": "Ready",
+      "url": ["http://localhost:3102/"],
+      "numberOfRuns": 3,
+      "settings": {
+        "formFactor": "mobile",
+        "chromeFlags": "--no-sandbox --headless=new"
+      }
+    },
+    "assert": {
+      "assertions": {
+        "largest-contentful-paint": [
+          "error",
+          { "maxNumericValue": 2500, "aggregationMethod": "median" }
+        ],
+        "cumulative-layout-shift": [
+          "error",
+          { "maxNumericValue": 0.02, "aggregationMethod": "median" }
+        ],
+        "resource-summary:script:size": ["error", { "maxNumericValue": 153600 }],
+        "resource-summary:font:count": ["error", { "maxNumericValue": 2 }],
+        "categories:accessibility": ["error", { "minScore": 1 }],
+        "categories:seo": ["warn", { "minScore": 1 }]
+      }
+    },
+    "upload": { "target": "filesystem", "outputDir": ".lighthouseci" }
+  }
+}

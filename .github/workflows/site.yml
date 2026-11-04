@@ -1,0 +1,57 @@
+name: site
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - 'apps/site/**'
+      - 'docs/site/**'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/site.yml'
+  pull_request:
+    paths:
+      - 'apps/site/**'
+      - 'docs/site/**'
+      - 'pnpm-lock.yaml'
+      - '.github/workflows/site.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: site-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+      - run: pnpm --filter @scoutly/site exec playwright install --with-deps chromium
+      - run: pnpm --filter @scoutly/site verify
+
+  # Fails while placeholders remain. Manual dispatch and release branches only.
+  launch:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref_name, 'release/')
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @scoutly/site check:launch
