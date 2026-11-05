@@ -164,5 +164,9 @@ Every placeholder is rendered visibly in preview builds (as `«PH:key»`) and **
 | `social_links` | Any social profiles to link in the footer |
 | `og_image_copy` | Final line for share images |
 | `verification_method` | Confirm how addresses are verified, so step 4 of "How it finds" is accurate |
+| `retention_period` | How long data is kept (privacy page) |
+| `data_processors` | Names of the services that process data for Scoutly (privacy page) |
+| `governing_law` | Governing law and courts (terms page) |
+| `effective_date` | Effective date shown on legal pages |
 
 Not decided and **must not be invented anywhere**: pricing, launch date, number of users, success rates, testimonials, partner companies, funding.

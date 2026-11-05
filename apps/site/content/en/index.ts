@@ -8,3 +8,6 @@ export { flags } from './flags';
 export { placeholders } from './placeholders';
 export { ph, isPlaceholderValue } from './ph';
 export * from './schema';
+export * from './home';
+export { privacy, terms, security, cookies, legalCommon, dataDeletionPage } from './legal';
+export type { LegalDoc, LegalSection } from './legal';

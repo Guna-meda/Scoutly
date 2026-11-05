@@ -18,4 +18,8 @@ export const placeholders = placeholdersSchema.parse({
   social_links: ph('social_links'),
   og_image_copy: ph('og_image_copy'),
   verification_method: ph('verification_method'),
+  retention_period: ph('retention_period'),
+  data_processors: ph('data_processors'),
+  governing_law: ph('governing_law'),
+  effective_date: ph('effective_date'),
 });

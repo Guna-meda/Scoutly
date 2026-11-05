@@ -16,6 +16,10 @@ export const placeholderKeys = [
   'social_links',
   'og_image_copy',
   'verification_method',
+  'retention_period',
+  'data_processors',
+  'governing_law',
+  'effective_date',
 ] as const;
 
 export type PlaceholderKey = (typeof placeholderKeys)[number];
@@ -114,6 +118,10 @@ export const placeholdersSchema = z.object({
   social_links: nonEmpty,
   og_image_copy: nonEmpty,
   verification_method: nonEmpty,
+  retention_period: nonEmpty,
+  data_processors: nonEmpty,
+  governing_law: nonEmpty,
+  effective_date: nonEmpty,
 });
 
 const match = z.object({
