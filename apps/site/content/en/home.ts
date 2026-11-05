@@ -98,7 +98,7 @@ export const control = {
     },
     { title: 'Nothing invented.', body: 'Every claim comes from facts you confirmed.' },
   ],
-  link: { label: 'Read the privacy page', href: '/privacy' },
+  
 } as const;
 
 export const pricing = {
@@ -174,10 +174,18 @@ export const deletion = {
 } as const;
 
 export const teams = {
-  heading: 'Early-stage teams, found for you.',
-  before: 'Scoutly looks past job boards, at teams like ',
-  between: [', ', ' and '],
-  after: '. Early-stage, hiring or not, where your work fits.',
-  detailLabel: 'About this match',
-  tones: ['white', 'yellow', 'blue'],
+  heading: 'We look where startups show up.',
+  before: 'Scoutly scans ',
+  items: [
+    { name: 'Y Combinator', detail: 'New batches and the companies in them.' },
+    { name: 'Product Hunt', detail: 'Fresh launches, the day they go live.' },
+    { name: 'TechCrunch', detail: 'Funding rounds and launch news.' },
+    { name: 'Crunchbase', detail: 'Who raised, how much and when.' },
+    { name: 'Wellfound', detail: 'Startup jobs and hiring signals.' },
+  ],
+  between: [', ', ', ', ', ', ' and '],
+  after:
+    ', plus funding news, careers pages and literally the rest of the internet, looking for startups that just raised, launched or started hiring.',
+  detailLabel: 'About this source',
+  tones: ['yellow', 'blue', 'white', 'pink', 'blue'],
 } as const;

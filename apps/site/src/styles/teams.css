@@ -5,8 +5,8 @@
 .ts-text {
   position: relative;
   margin: 0;
-  max-width: 26em;
-  font-size: clamp(26px, 4.4vw, 44px);
+  max-width: 30em;
+  font-size: clamp(24px, 3.6vw, 38px);
   line-height: 1.95;
   letter-spacing: -0.02em;
   font-weight: 600;
@@ -18,7 +18,7 @@
   align-items: center;
   gap: 8px;
   min-height: var(--tap);
-  margin: 0 -2px 0 2px;
+  margin: 0 -5px 0 2px;
   padding: 0 6px 0 6px;
   border: 0;
   background: transparent;
@@ -26,6 +26,18 @@
   font: inherit;
   cursor: pointer;
   vertical-align: middle;
+}
+.ts-item {
+  border-radius: 12px;
+  transition: background-color var(--dur-2) var(--ease);
+}
+@media (hover: hover) {
+  .ts-item:hover {
+    background: color-mix(in srgb, var(--ink) 9%, transparent);
+  }
+}
+.ts-item[aria-pressed='true'] {
+  background: color-mix(in srgb, var(--ink) 6%, transparent);
 }
 .ts-item:focus-visible {
   outline: 3px solid var(--ink);
@@ -54,6 +66,9 @@
 }
 .ts-logo[data-tone='yellow'] .ts-fill {
   background: var(--beat-1);
+}
+.ts-logo[data-tone='pink'] .ts-fill {
+  background: var(--beat-2);
 }
 .ts-logo[data-tone='blue'] .ts-fill {
   background: var(--beat-3);

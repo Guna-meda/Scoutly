@@ -2,11 +2,11 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
-import { stage, teams } from '@content/en';
+import { teams } from '@content/en';
 
 type Edge = 'left' | 'right' | 'top' | 'bottom';
 type Fill = { edge: Edge; on: boolean };
-const matches = stage.specific.matches;
+const matches = teams.items;
 
 /** Nearest edge of a rect to a pointer position. */
 function nearestEdge(rect: DOMRect, x: number, y: number): Edge {
@@ -136,8 +136,7 @@ export function TeamsSelect() {
       {current ? (
         <p className="ts-detail" role="status" aria-live="polite">
           <span className="sr-only">{teams.detailLabel}: </span>
-          <strong>{current.name}</strong> · {current.fit}.{' '}
-          {current.why.charAt(0).toUpperCase() + current.why.slice(1)}
+          <strong>{current.name}</strong> · {current.detail}
         </p>
       ) : null}
     </div>
