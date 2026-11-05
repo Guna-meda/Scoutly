@@ -132,6 +132,15 @@ export const stageSchema = z.object({
     sampleTag: nonEmpty,
   }),
   beats: z.array(z.object({ label: nonEmpty, headline: nonEmpty, caption: nonEmpty })).length(3),
+  ui: z.object({
+    heading: nonEmpty,
+    stepOf: nonEmpty,
+    announce: nonEmpty,
+    prev: nonEmpty,
+    next: nonEmpty,
+    goTo: nonEmpty,
+    controls: nonEmpty,
+  }),
   simple: z.object({
     fileName: nonEmpty,
     fileTag: nonEmpty,

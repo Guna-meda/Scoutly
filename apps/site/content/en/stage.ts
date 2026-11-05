@@ -30,6 +30,15 @@ export const stage = stageSchema.parse({
         'You see the exact email. Edit it, send it or discard it. It goes from your own Gmail.',
     },
   ],
+  ui: {
+    heading: 'How it works',
+    stepOf: 'Step {n} of 3',
+    announce: 'Step {n} of 3: {headline}',
+    prev: 'Previous step',
+    next: 'Next step',
+    goTo: 'Go to step {n}',
+    controls: 'Steps',
+  },
   simple: {
     fileName: 'aarav_resume.pdf',
     fileTag: 'Sample file',
