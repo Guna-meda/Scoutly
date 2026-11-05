@@ -625,3 +625,21 @@ span[data-placeholder='true'] {
   padding: 0 4px;
   border-radius: 4px;
 }
+
+/* Waitlist mini plane */
+.form {
+  position: relative;
+}
+.mini-plane {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+.pp-trail-line {
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

@@ -145,3 +145,43 @@ test('without JS the stacked layout shows', async ({ browser }) => {
   await expect(page.locator('.stage-pin')).toBeHidden();
   await ctx.close();
 });
+
+for (const [width, height] of [
+  [1280, 800],
+  [390, 844],
+] as const) {
+  test(`paper plane send reaches Sent, replays, and has no horizontal scroll at ${width}`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height });
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+    await page.goto('/');
+    const pin = page.locator('.stage-pin');
+    await expect(pin).toBeVisible();
+    const top = await page.evaluate(
+      () =>
+        (document.querySelector('.stage-pin') as HTMLElement).getBoundingClientRect().top + scrollY,
+    );
+    await page.evaluate((y) => window.scrollTo(0, y), top - 64 + height * 0.7 * 2 + 5);
+    await expect(pin).toHaveAttribute('data-send', 'sending', { timeout: 6000 });
+    await expect(pin).toHaveAttribute('data-send', 'sent', { timeout: 12000 });
+    const replay = page.locator('.replay:visible');
+    await expect(replay).toBeEnabled({ timeout: 6000 });
+    await replay.click();
+    await expect(pin).toHaveAttribute('data-send', 'sending', { timeout: 6000 });
+    await expect(pin).toHaveAttribute('data-send', 'sent', { timeout: 12000 });
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+    );
+    expect(overflow).toBe(false);
+  });
+}
+
+test('reduced motion shows the sent state without the animation', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await expect(page.locator('.stage-pin')).toBeHidden();
+  await expect(page.locator('.stage-stacked .lbl-sent').first()).toBeVisible();
+  await expect(page.locator('.pp-overlay')).toHaveCount(0);
+});

@@ -57,7 +57,10 @@ export function ScreenYours() {
         paragraphs={y.paragraphs}
         signoff={y.signoff}
       />
-      <QuickReplies {...y.quickReplies} />
+      <QuickReplies {...y.quickReplies} sending={stage.send.sending} sent={stage.send.sent} />
+      <div className="send-status" aria-hidden="true">
+        {stage.send.status.replace('{name}', stage.send.recipient)}
+      </div>
       <SentNote>{y.sentNote}</SentNote>
     </>
   );

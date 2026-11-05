@@ -583,33 +583,198 @@
 .stage-pin .screen[data-state='active'] .match:nth-child(3) .pill {
   animation: pop 360ms var(--ease) 1140ms both;
 }
-/* beat 3 */
+/* beat 3: the send flow. data-send on .stage-pin is idle, sending or sent (set by PaperPlaneSend). */
 .stage-pin .screen[data-screen='2'][data-state='active'] > :nth-child(1) {
   animation: rise 420ms var(--ease) 80ms both;
 }
-.stage-pin .screen[data-screen='2'][data-state='active'] > :nth-child(2) {
+.stage-pin .screen[data-screen='2'][data-state='active'] > :nth-child(n + 2) {
   animation: none;
-}
-.stage-pin .screen[data-screen='2'][data-state='active'] > :nth-child(3) {
-  animation: rise 420ms var(--ease) 2500ms both;
 }
 .quick-replies {
   position: relative;
 }
-.rw-plane {
+.lbl {
   display: none;
+  align-items: center;
+  gap: 6px;
+}
+.lbl-sent {
+  display: inline-flex;
+}
+.stage-pin[data-send] .lbl-sent {
+  display: none;
+}
+.stage-pin[data-send='idle'] .lbl-send,
+.stage-pin[data-send='sending'] .lbl-sending,
+.stage-pin[data-send='sent'] .lbl-sent {
+  display: inline-flex;
+}
+.lbl .btn-spinner {
+  width: 14px;
+  height: 14px;
+}
+.send-status {
   position: absolute;
-  left: 30px;
-  top: 8px;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  padding: 8px 12px;
+  border: var(--outline);
+  border-radius: var(--r-m);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 600;
   opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--dur-3) var(--ease),
+    visibility 0s linear var(--dur-3);
+}
+.stage-pin[data-send='sending'] .send-status {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.stage-pin[data-send='sending'] .screen[data-screen='2'] > :nth-child(1) {
+  animation: none;
+  opacity: 0;
+  transform: translateY(10px) scale(0.94);
+  transition:
+    opacity var(--dur-4) var(--ease),
+    transform var(--dur-4) var(--ease);
+}
+.stage-pin[data-send='sent'] .screen[data-screen='2'] > :nth-child(1) {
+  animation: none;
+}
+.stage-pin[data-send='idle'] .sent-note,
+.stage-pin[data-send='sending'] .sent-note {
+  opacity: 0;
+  visibility: hidden;
+}
+.stage-pin[data-send='sent'] .screen[data-state='active'] .sent-note {
+  animation: rise 420ms var(--ease) 500ms both;
+}
+.stage-pin[data-send='sending'] .screen[data-state='active'] .qr-send {
+  animation: press 320ms var(--ease) both;
+}
+.stage-pin[data-send='sent'] .qr-send {
+  background: var(--ok);
+  border-color: var(--ink);
+  color: var(--action-text);
+}
+
+/* Replay button and the plane overlay */
+.replay {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: var(--tap);
+  padding: 0 18px;
+  border: var(--outline);
+  border-radius: var(--r-full);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.replay[data-show='false'] {
+  visibility: hidden;
+}
+.stage-centre .replay {
+  margin-top: 8px;
+}
+.stage-phone {
+  position: relative;
+}
+.stage-phone .replay {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  min-height: var(--tap);
+  z-index: 3;
+}
+@media (min-width: 1024px) {
+  .stage-phone .replay {
+    display: none;
+  }
+}
+@media (max-width: 1023.98px) {
+  .stage-centre .replay {
+    display: none;
+  }
+}
+.pp-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  overflow: visible;
   pointer-events: none;
 }
-.stage-pin .screen[data-state='active'] .rw-plane {
-  display: inline-flex;
-  animation: fly 800ms ease-in 1700ms both;
+.pp-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
 }
-.stage-pin .screen[data-state='active'] .qr-send {
-  animation: press 320ms var(--ease) 1500ms both;
+.pp-sheet {
+  fill: var(--bg);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+.pp-flap {
+  fill: var(--track);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+.pp-shade {
+  fill: var(--track);
+}
+.pp-line {
+  stroke: var(--ink);
+  stroke-width: 1;
+  fill: none;
+}
+.pp-dash {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 0.8;
+  stroke-dasharray: 3 3;
+}
+.pp-text {
+  fill: var(--ink);
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 6.4px;
+}
+.pp-micro {
+  fill: var(--ink);
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 4px;
+  font-weight: 700;
+}
+.pp-stamp {
+  fill: var(--beat-1);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+.pp-postmark {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 0.8;
+}
+.pp-trail {
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.pp-cursor {
+  fill: var(--ink);
+  stroke: var(--surface);
+  stroke-width: 1.5;
 }
 .progress-slot {
   position: relative;

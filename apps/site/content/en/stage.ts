@@ -37,6 +37,16 @@ export const stage = stageSchema.parse({
     goTo: 'Go to step {n}',
     controls: 'Steps',
   },
+  send: {
+    status: 'On its way to {name}',
+    sending: 'Sending',
+    sent: 'Sent',
+    replay: 'Replay',
+    announce: 'Email sent.',
+    stamp: 'AIR MAIL',
+    sheetLabel: 'Draft',
+    recipient: 'Priya',
+  },
   simple: {
     fileName: 'aarav_resume.pdf',
     reply: "Got it, Aarav. I'm reading your work now.",

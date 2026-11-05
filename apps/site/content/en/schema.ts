@@ -149,6 +149,16 @@ export const stageSchema = z.object({
     goTo: nonEmpty,
     controls: nonEmpty,
   }),
+  send: z.object({
+    status: nonEmpty,
+    sending: nonEmpty,
+    sent: nonEmpty,
+    replay: nonEmpty,
+    announce: nonEmpty,
+    stamp: nonEmpty,
+    sheetLabel: nonEmpty,
+    recipient: nonEmpty,
+  }),
   simple: z.object({
     fileName: nonEmpty,
     reply: nonEmpty,

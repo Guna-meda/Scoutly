@@ -38,7 +38,7 @@ describe('sample names', () => {
   it('introduces no other capitalised names', () => {
     const generic = new Set(
       (
-        'Scoutly Chat Sample Simple Specific Yours Send Drop Startups Nothing Each You Edit Got Reading ' +
+        'On Sending Replay Email AIR MAIL Scoutly Chat Sample Simple Specific Yours Send Drop Startups Nothing Each You Edit Got Reading ' +
         'Draft Strong Good Stretch Reply Sent Seed Series Remote India Bengaluru Pune Hiring Frontend ' +
         'Product Why Source Hi Thanks Would Your Gmail SEND EDIT DISCARD WhatsApp I Nothing Thanks ' +
         "That That's It A No My I'm I'll I've"
