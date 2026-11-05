@@ -53,8 +53,53 @@ export function TeamsSelect() {
   const setFill = (i: number, edge: Edge, on: boolean) =>
     setFills((f) => f.map((v, j) => (j === i ? { edge, on } : v)));
 
+  /* Touch screens have no hover, so the selection roams on its own: random names, never the same
+     one twice in a row, paused while off-screen, after a tap, or with reduced motion. */
+  const activeRef = useRef(0);
+  const pausedUntil = useRef(0);
+  const visible = useRef(true);
+  useEffect(() => {
+    activeRef.current = active;
+  }, [active]);
+  useEffect(() => {
+    const w = wrap.current;
+    if (!w) return;
+    const touch = window.matchMedia('(hover: none)');
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const io = new IntersectionObserver(([e]) => {
+      visible.current = !!e?.isIntersecting;
+    });
+    io.observe(w);
+    const edges: Edge[] = ['left', 'right', 'top', 'bottom'];
+    const pick = <T,>(list: T[]): T => list[Math.floor(Math.random() * list.length)] as T;
+    const id = window.setInterval(() => {
+      if (!touch.matches || reduced.matches || !visible.current) return;
+      if (Date.now() < pausedUntil.current) return;
+      const prev = activeRef.current;
+      const next = pick(matches.map((_, i) => i).filter((i) => i !== prev));
+      setFills((f) =>
+        f.map((v, j) =>
+          j === prev
+            ? { edge: pick(edges), on: false }
+            : j === next
+              ? { edge: pick(edges), on: true }
+              : v,
+        ),
+      );
+      setActive(next);
+    }, 2200);
+    return () => {
+      window.clearInterval(id);
+      io.disconnect();
+    };
+  }, []);
+
   const current = matches[active];
-  const parts: ReactNode[] = [<span key="before">{teams.before}</span>];
+  const parts: ReactNode[] = [
+    <span key="before" className="ts-plain">
+      {teams.before}
+    </span>,
+  ];
   matches.forEach((m, i) => {
     const f = fills[i] ?? { edge: 'left' as Edge, on: false };
     const horizontal = f.edge === 'left' || f.edge === 'right';
@@ -93,7 +138,15 @@ export function TeamsSelect() {
           setFill(i, 'left', true);
         }}
         onBlur={() => setFill(i, 'right', false)}
-        onClick={() => setActive(i)}
+        onClick={() => {
+          pausedUntil.current = Date.now() + 6000;
+          setActive(i);
+          setFills((f) =>
+            f.map((v, j) =>
+              j === i ? { edge: 'left', on: true } : v.on ? { edge: 'right', on: false } : v,
+            ),
+          );
+        }}
       >
         <span
           className="ts-logo"
@@ -105,11 +158,13 @@ export function TeamsSelect() {
           <span className="ts-fill" />
           <span className="ts-initial">{m.name.charAt(0)}</span>
         </span>
-        <span>{m.name}</span>
+        <span className="ts-name">{m.name}</span>
       </button>,
     );
     parts.push(
-      <span key={`sep-${i}`}>{i < matches.length - 1 ? teams.between[i] : teams.after}</span>,
+      <span key={`sep-${i}`} className="ts-plain">
+        {i < matches.length - 1 ? teams.between[i] : teams.after}
+      </span>,
     );
   });
 
