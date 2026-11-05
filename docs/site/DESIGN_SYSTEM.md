@@ -1,6 +1,6 @@
 # Scoutly site: design system
 
-Status: approved direction, palette 5 ("acid and pink"). Source of truth for tokens is `apps/site/src/styles/tokens.css`. If this file and the code disagree, fix the code to match this file or raise it.
+Status: approved direction. Palette updated 2026-11-05 by the owner: a flat, bright palette of near-white ground, sunny yellow, soft pink and sky blue, with green and red as fill-only accents. This replaces the earlier "acid and pink" palette 5 (stone ground, acid yellow-green, hot pink); the owner chose it, so do not revert it without asking. Source of truth for tokens is `apps/site/src/styles/tokens.css`. If this file and the code disagree, fix the code to match this file or raise it.
 
 ## 1. Feel
 
@@ -12,26 +12,28 @@ Define as CSS variables on `:root` by role, not by hue, so dark mode later is a 
 
 | Token | Value | Role | Notes |
 |---|---|---|---|
-| `--bg` | `#F3F0E8` | Page ground | Stone |
+| `--bg` | `#F9FAF9` | Page ground | Near-white |
 | `--surface` | `#FFFFFF` | Cards, device, incoming bubbles | Also the beat 3 card |
 | `--ink` | `#141414` | Text, outlines, icons, primary buttons | |
-| `--ink-2` | `#57524C` | Captions only | **Never on pink** (4.0:1 fails) |
-| `--beat-1` | `#D7FF3F` | Card "Simple", outgoing bubbles, toggle on | Acid |
-| `--beat-2` | `#FF9EC7` | Card "Specific" | Ink text only |
-| `--beat-3` | `#FFFFFF` | Card "Yours" | Same as surface, kept as its own token |
+| `--ink-2` | `#55595A` | Captions only | **Never on blue** (3.9:1 fails); also kept off pink |
+| `--beat-1` | `#FBE74E` | Card "Simple", outgoing bubbles, toggle on | Yellow |
+| `--beat-2` | `#FFCADC` | Card "Specific" | Pink. Ink text only |
+| `--beat-3` | `#9DC4F4` | Card "Yours" | Blue. Ink text only |
 | `--action` | `#141414` | Primary button fill | |
 | `--action-text` | `#FFFFFF` | Text on primary button | |
-| `--chat-bg` | `#E9E5DA` | Behind bubbles inside the device | |
-| `--track` | `#DDD8CA` | Progress and toggle tracks | Decoration only, no text |
+| `--chat-bg` | `#E2F2E5` | Behind bubbles inside the device | Mint |
+| `--track` | `#DFE3DF` | Progress and toggle tracks | Decoration only, no text |
 | `--ok` | `#1F7A4D` | Success | 5.3:1 on white |
 | `--warn` | `#B3261E` | Error | 6.5:1 on white |
 | `--line` | `#141414` | Outline colour | |
+| `--green` | `#05C92F` | Accent fills (dots, toggle on) | Fill only, never text |
+| `--red` | `#FF5A4E` | Accent fills (dots) | Fill only, never text. Use `--warn` for error text |
 
-Verified contrast: ink on stone 16.2, on white 18.4, on acid 16.0, on pink 9.6, on chat-bg 14.6; ink-2 on stone 6.8, on white 7.7, on acid 6.7, on chat-bg 6.1; white on ink 18.4. A test in CI recomputes every pair listed in `src/styles/contrast-pairs.ts` and fails below 4.5 (3.0 for 24 px+ text and UI borders).
+Verified contrast: ink on page ground 17.6, on white 18.4, on yellow 14.6, on pink 12.9, on blue 10.2, on chat-bg 15.8; ink-2 on page ground 6.8, on white 7.1, on yellow 5.6, on chat-bg 6.1; white on ink 18.4. A test in CI recomputes every pair listed in `src/styles/contrast-pairs.ts` and fails below 4.5 (3.0 for 24 px+ text and UI borders).
 
 Rules:
 - Never use text opacity to dim text. Use `--ink-2` on allowed surfaces only.
-- No green near WhatsApp's green. Acid is a yellow-green, used as a fill only, never as an icon or logo colour that could read as WhatsApp.
+- `--green` is a bright green and sits close to WhatsApp's green. The owner accepted that. Use it as a small fill accent only, never as the logo, the call-to-action fill or a WhatsApp lookalike. Primary call-to-action buttons stay black.
 - Colour is never the only signal (fit labels carry words, states carry icons).
 
 ## 3. Type
@@ -66,7 +68,7 @@ An original "lens that sends": a ring with a gap in its top-right quarter and an
 </svg>
 ```
 
-Use ink on stone or acid, white on ink. Minimum size 20 px. Do not use WhatsApp's logo or icon in our mark. If the WhatsApp name or logo is shown for the call to action, follow WhatsApp's brand guidelines and keep it visibly separate from our mark.
+Use ink on the page ground or yellow, white on ink. Minimum size 20 px. Do not use WhatsApp's logo or icon in our mark. If the WhatsApp name or logo is shown for the call to action, follow WhatsApp's brand guidelines and keep it visibly separate from our mark.
 
 Icons: one inline SVG set, 24 px grid, stroke 2.2, round caps, `aria-hidden` unless it carries meaning. Needed: bolt, target, check-circle, paperclip, plane, chevron-left, chevron-right, plus, menu, chat-bubble, doc.
 
@@ -94,4 +96,4 @@ Phone (< 1024 px): device full width minus 16 px gutters, height 440 px (500 px 
 
 ## 8. Do and don't
 
-Do: show the real flow, keep sentences short, keep outlines at 2 px, label sample data. Don't: add gradients or shadows, dim text, use pink behind grey text, invent numbers, name the competitor, imitate WhatsApp's UI assets or the inspiration site's brand, copy, illustrations or layout.
+Do: show the real flow, keep sentences short, keep outlines at 2 px, label sample data. Don't: add gradients or shadows, dim text, use pink or blue behind grey text, invent numbers, name the competitor, imitate WhatsApp's UI assets or the inspiration site's brand, copy, illustrations or layout.

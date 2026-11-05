@@ -137,7 +137,6 @@ export const stageSchema = z.object({
     ariaLabel: nonEmpty, // contains {n}
     name: nonEmpty,
     role: nonEmpty,
-    sampleTag: nonEmpty,
   }),
   beats: z.array(z.object({ label: nonEmpty, headline: nonEmpty, caption: nonEmpty })).length(3),
   ui: z.object({
@@ -151,7 +150,6 @@ export const stageSchema = z.object({
   }),
   simple: z.object({
     fileName: nonEmpty,
-    fileTag: nonEmpty,
     reply: nonEmpty,
     progressLabel: nonEmpty,
     next: nonEmpty,

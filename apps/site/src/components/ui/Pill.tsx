@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { cx } from './cx';
 
-/** Only the three allowed fills: acid (beat-1), pink (beat-2), white (surface). Text is always ink. */
+/** Only the three allowed fills: yellow (beat-1), pink (beat-2), white (surface). Text is always ink. */
 export type PillTone = 'lime' | 'pink' | 'white';
 
 type Props = {

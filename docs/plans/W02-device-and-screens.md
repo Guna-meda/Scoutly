@@ -42,7 +42,7 @@ src/styles/components.css (device and chat classes, tokens only)
 ## 4. Risks
 
 - Content fit in the 330x680 frame at the smallest height (520px): match cards plus intro/outro may exceed it; mitigation is tighter spacing.
-- Bubble contrast: ink-2 captions only on surface, `--beat-1` or `--chat-bg`, never on pink (the Specific fit pill uses ink text on pink).
+- Bubble contrast: ink-2 captions only on surface, `--beat-1` or `--chat-bg`, never on pink or blue (the Specific fit pill uses ink text on pink).
 - JS budget: server components only; the only client code is the styleguide-only beat control. Home JS must stay at 136.62 KB gzipped.
 
 ## 5. Order of work

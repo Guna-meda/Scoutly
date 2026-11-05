@@ -1,10 +1,10 @@
 import { Icon } from '../ui/Icon';
 import { Bubble } from './Bubble';
 
-type Props = { name: string; tag: string };
+type Props = { name: string };
 
 /** The user's outgoing file message. */
-export function FileBubble({ name, tag }: Props) {
+export function FileBubble({ name }: Props) {
   return (
     <Bubble from="out">
       <div className="file-row">
@@ -13,7 +13,6 @@ export function FileBubble({ name, tag }: Props) {
         </span>
         <span className="file-meta">
           <span className="file-name">{name}</span>
-          <span className="caption">{tag}</span>
         </span>
         <Icon name="paperclip" size={22} className="rw-clip" />
       </div>

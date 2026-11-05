@@ -9,7 +9,6 @@ import {
   hero,
   join,
   pricing,
-  replies,
 } from '@content/en';
 import { Container } from '../layout/Container';
 import { Section } from '../layout/Section';
@@ -77,19 +76,6 @@ export function FeatureRow() {
   );
 }
 
-export function RepliesSection() {
-  return (
-    <Section labelledBy="replies-h" className="replies">
-      <div className="replies-grid">
-        <H2 id="replies-h">{replies.heading}</H2>
-        <Body as="p" className="replies-note">
-          {replies.note}
-        </Body>
-      </div>
-    </Section>
-  );
-}
-
 export function FindSection() {
   return (
     <Section id="find" labelledBy="find-h">
@@ -114,9 +100,6 @@ export function EmailSection() {
         <article className="email-card email-good">
           <div className="email-head">
             <Pill tone="lime">{emailCompare.goodLabel}</Pill>
-            <Pill tone="white" kind="tag">
-              {emailCompare.sample}
-            </Pill>
           </div>
           <TypedEmail />
         </article>

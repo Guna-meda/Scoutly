@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { cx } from '../ui/cx';
 
 type Props = {
-  /** "in" is Scoutly (surface); "out" is the user (acid). */
+  /** "in" is Scoutly (surface); "out" is the user (yellow). */
   from?: 'in' | 'out';
   wide?: boolean;
   className?: string;

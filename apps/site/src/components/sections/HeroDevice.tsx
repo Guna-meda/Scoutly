@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { heroExtra } from '@content/en';
 import { ScreenStack } from '../chat/ScreenStack';
 import type { Beat } from '@/lib/stage-mode';
 
@@ -41,7 +40,6 @@ export function HeroDevice() {
   return (
     <div ref={ref} className="hero-device">
       <ScreenStack beat={beat} />
-      <p className="hero-device-caption">{heroExtra.deviceCaption}</p>
     </div>
   );
 }

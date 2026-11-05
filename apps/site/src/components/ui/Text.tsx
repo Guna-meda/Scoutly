@@ -17,7 +17,7 @@ export type TextElement =
 
 /**
  * Surfaces where the muted ink colour (--ink-2) is allowed (DESIGN_SYSTEM.md section 2).
- * `beat-2` (pink) is deliberately absent: ink-2 on pink is 4.0:1 and fails AA.
+ * `beat-2` (pink) and `beat-3` (blue) are deliberately absent: ink-2 on blue is 3.9:1 and fails AA, and pink stays out to keep the rule simple.
  */
 export type MutedSurface = 'bg' | 'surface' | 'beat-1' | 'chat-bg';
 

@@ -35,22 +35,22 @@ describe('contrast pairs', () => {
     });
   }
 
-  it('never pairs --ink-2 with --beat-2 (fails at 4.0:1)', () => {
+  it('never pairs --ink-2 with --beat-2 or --beat-3 (blue fails at 3.9:1)', () => {
     for (const f of forbiddenPairs) {
       expect(contrastPairs.some((p) => p.fg === f.fg && p.bg === f.bg)).toBe(false);
     }
-    expect(ratio(token('ink-2'), token('beat-2'))).toBeLessThan(4.5);
+    expect(ratio(token('ink-2'), token('beat-3'))).toBeLessThan(4.5);
   });
 
   it('matches the verified values in DESIGN_SYSTEM.md', () => {
     const near = (a: TokenName, b: TokenName, v: number) =>
       expect(ratio(token(a), token(b))).toBeCloseTo(v, 0);
-    near('ink', 'bg', 16.2);
+    near('ink', 'bg', 17.6);
     near('ink', 'surface', 18.4);
-    near('ink', 'beat-1', 16.0);
-    near('ink', 'beat-2', 9.6);
-    near('ink', 'chat-bg', 14.6);
+    near('ink', 'beat-1', 14.6);
+    near('ink', 'beat-2', 12.9);
+    near('ink', 'chat-bg', 15.8);
     near('ink-2', 'bg', 6.8);
-    near('ink-2', 'surface', 7.7);
+    near('ink-2', 'surface', 7.1);
   });
 });

@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
-import { ScreenStack, ScreenStacked } from '@/components/chat/ScreenStack';
+import { ScreenStack } from '@/components/chat/ScreenStack';
 import { SAMPLE_NAMES, stage } from './index';
 
 const words = (s: string) => s.split(/\s+/).filter(Boolean).length;
@@ -38,7 +38,7 @@ describe('sample names', () => {
   it('introduces no other capitalised names', () => {
     const generic = new Set(
       (
-        'Scoutly Sample Simple Specific Yours Send Drop Startups Nothing Each You Edit Got Reading ' +
+        'Scoutly Chat Sample Simple Specific Yours Send Drop Startups Nothing Each You Edit Got Reading ' +
         'Draft Strong Good Stretch Reply Sent Seed Series Remote India Bengaluru Pune Hiring Frontend ' +
         'Product Why Source Hi Thanks Would Your Gmail SEND EDIT DISCARD WhatsApp I Nothing Thanks ' +
         "That That's It A No My I'm I'll I've"
@@ -52,10 +52,6 @@ describe('sample names', () => {
 });
 
 describe('device markup', () => {
-  it('every stacked screen shows the SAMPLE tag', () => {
-    const html = renderToStaticMarkup(<ScreenStacked />);
-    expect(html.match(new RegExp(`>${stage.device.sampleTag}<`, 'g'))).toHaveLength(3);
-  });
   it('contains nothing focusable', () => {
     const html = renderToStaticMarkup(<ScreenStack beat={2} />);
     expect(html).not.toMatch(/tabindex|role="button"|<button|<a |onclick/i);

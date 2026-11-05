@@ -13,7 +13,7 @@ export function ScreenSimple() {
   const s = stage.simple;
   return (
     <>
-      <FileBubble name={s.fileName} tag={s.fileTag} />
+      <FileBubble name={s.fileName} />
       <Bubble>{s.reply}</Bubble>
       <ProgressLine label={s.progressLabel} state="done" />
       <Bubble>{s.next}</Bubble>

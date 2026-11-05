@@ -40,7 +40,7 @@ export const contrastPairs: readonly ContrastPair[] = [
   { fg: 'ink', bg: 'beat-2', kind: 'text' },
   { fg: 'ink', bg: 'beat-3', kind: 'text' },
   { fg: 'ink', bg: 'chat-bg', kind: 'text' },
-  // ink-2 captions: allowed surfaces only (never pink)
+  // ink-2 captions: allowed surfaces only (never pink or blue)
   { fg: 'ink-2', bg: 'bg', kind: 'text' },
   { fg: 'ink-2', bg: 'surface', kind: 'text' },
   { fg: 'ink-2', bg: 'beat-1', kind: 'text' },
@@ -59,6 +59,7 @@ export const contrastPairs: readonly ContrastPair[] = [
   { fg: 'line', bg: 'surface', kind: 'ui' },
   { fg: 'line', bg: 'beat-1', kind: 'ui' },
   { fg: 'line', bg: 'beat-2', kind: 'ui' },
+  { fg: 'line', bg: 'beat-3', kind: 'ui' },
   { fg: 'line', bg: 'chat-bg', kind: 'ui' },
   { fg: 'line', bg: 'track', kind: 'ui' },
 ];
@@ -66,4 +67,5 @@ export const contrastPairs: readonly ContrastPair[] = [
 /** Combinations that must never appear in `contrastPairs` (DESIGN_SYSTEM.md section 2 rules). */
 export const forbiddenPairs: readonly { fg: TokenName; bg: TokenName }[] = [
   { fg: 'ink-2', bg: 'beat-2' },
+  { fg: 'ink-2', bg: 'beat-3' },
 ];

@@ -4,20 +4,22 @@
    The only file allowed to contain hex values. */
 :root {
   /* Colour (by role, not hue) */
-  --bg: #f3f0e8;
+  --bg: #f9faf9;
   --surface: #ffffff;
   --ink: #141414;
-  --ink-2: #57524c;
-  --beat-1: #d7ff3f;
-  --beat-2: #ff9ec7;
-  --beat-3: #ffffff;
+  --ink-2: #55595a;
+  --beat-1: #fbe74e;
+  --beat-2: #ffcadc;
+  --beat-3: #9dc4f4;
   --action: #141414;
   --action-text: #ffffff;
-  --chat-bg: #e9e5da;
-  --track: #ddd8ca;
+  --chat-bg: #e2f2e5;
+  --track: #dfe3df;
   --ok: #1f7a4d;
   --warn: #b3261e;
   --line: #141414;
+  --green: #05c92f; /* fill only (dots, toggles); never text */
+  --red: #ff5a4e; /* fill only; never text */
 
   /* Type */
   --text-display: clamp(44px, 9vw, 96px);

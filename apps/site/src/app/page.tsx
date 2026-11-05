@@ -10,7 +10,6 @@ import {
   Hero,
   JoinSection,
   PricingSection,
-  RepliesSection,
 } from '@/components/sections/HomeSections';
 import { StageSection } from '@/components/stage/StageSection';
 import { pageMetadata } from '@/lib/metadata';
@@ -30,7 +29,6 @@ export default function HomePage() {
       <Hero />
       <FeatureRow />
       <StageSection />
-      {flags.repliesBeat ? <RepliesSection /> : null}
       <FindSection />
       <EmailSection />
       <ControlSection />

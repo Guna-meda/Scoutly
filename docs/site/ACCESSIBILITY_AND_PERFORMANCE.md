@@ -6,7 +6,7 @@ Mobile is the primary viewport (Android, 4G). Target: WCAG 2.2 AA on every page.
 
 Contrast
 - Body text 4.5:1 minimum, large text and UI borders 3:1, in **every state**, including hover, focus, disabled and mid-transition. Palette pairs are listed in `src/styles/contrast-pairs.ts` and tested in CI.
-- `--ink-2` never sits on pink. No text opacity tricks. Colour is never the only signal.
+- `--ink-2` never sits on pink or blue. No text opacity tricks. Colour is never the only signal.
 
 Structure and semantics
 - One `h1` per page, headings in order. Landmarks: `header`, `nav aria-label="Main"`, `main`, `footer`. A "Skip to content" link is the first focusable element.

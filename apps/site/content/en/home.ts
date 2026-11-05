@@ -3,8 +3,7 @@ import { ph } from './ph';
 /** Home page copy beyond the hero and stage. Source: docs/site/CONTENT.md sections 1 to 10. */
 
 export const heroExtra = {
-  deviceCaption: 'Sample conversation',
-  deviceAriaLabel: 'Sample WhatsApp-style chat that cycles through three steps',
+  deviceAriaLabel: 'Chat preview that cycles through three steps',
 };
 
 export const features = {
@@ -19,11 +18,10 @@ export const features = {
 
 export const replies = {
   heading: 'Replies come to you',
-  tag: 'Sample',
   notification: 'Priya replied to your note.',
   reply: 'Thanks for writing. Can you send two links to your work?',
   note: 'Follow-ups stop the moment someone replies.',
-  deviceLabel: 'Sample notification and reply',
+  deviceLabel: 'Notification and reply',
 } as const;
 
 export const find = {
@@ -75,7 +73,6 @@ export const emailCompare = {
   ],
   tooLong: 'Too long',
   standard: 'About 60 to 90 words. One clear ask. Only facts you confirmed.',
-  sample: 'Sample',
 } as const;
 
 export const control = {

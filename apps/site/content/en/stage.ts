@@ -6,10 +6,9 @@ export const SAMPLE_NAMES = ['Aarav', 'Priya', 'Fernway', 'Kite & Loom', 'Northw
 /** Sample chat and the three beats. Source: docs/site/CONTENT.md section 3. All data is fictional. */
 export const stage = stageSchema.parse({
   device: {
-    ariaLabel: 'Sample WhatsApp-style chat, step {n} of 3',
+    ariaLabel: 'Chat preview, step {n} of 3',
     name: 'Scoutly',
     role: 'talent agent',
-    sampleTag: 'Sample',
   },
   beats: [
     {
@@ -40,13 +39,12 @@ export const stage = stageSchema.parse({
   },
   simple: {
     fileName: 'aarav_resume.pdf',
-    fileTag: 'Sample file',
     reply: "Got it, Aarav. I'm reading your work now.",
     progressLabel: 'Reading your work',
     next: "I'll show you matches first. Nothing gets written until you pick one.",
   },
   specific: {
-    intro: '3 matches for you. Sample data, not real companies.',
+    intro: '3 matches for you.',
     whyLabel: 'Why:',
     sourceLabel: 'Source:',
     matches: [
@@ -75,7 +73,7 @@ export const stage = stageSchema.parse({
     outro: "Reply with a number and I'll draft the email.",
   },
   yours: {
-    draftHeader: 'Draft for Priya at Fernway · email verified · sample',
+    draftHeader: 'Draft for Priya at Fernway · email verified',
     greeting: 'Hi Priya,',
     paragraphs: [
       "I'm Aarav, a frontend engineer. I rebuilt my last team's checkout flow and moved it onto a shared component library.",

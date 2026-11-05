@@ -32,7 +32,7 @@ Rules: `will-change` only while an animation runs. No animation longer than 600 
 | 03 | Reward moments | Beat 1: paperclip drops, dot pulses twice, progress fills, dot turns into a check. Beat 2: fit labels pop in at 260 ms steps. Beat 3: SEND presses, a paper plane leaves, a note rises. Caption card: matching small icon (paperclip and check; three pills; a toggle flipping on with `--spring`). | Final state |
 | 04 | Hero chat loop | Sample messages type in, about 6 s loop. | Static final frame |
 | 05 | Headline word rise | Words rise 14 px, 40 ms stagger, once per page view. | Plain text |
-| 06 | Statement sweep | A big sentence; an acid highlight sweeps behind each word as it enters. Text stays full ink the whole time. | Highlight fully drawn |
+| 06 | Statement sweep | A big sentence; a yellow highlight sweeps behind each word as it enters. Text stays full ink the whole time. | Highlight fully drawn |
 | 07 | Sticky finder steps | Heading sticks on the left, five steps scroll on the right; the active step grows and a line draws to the next. | Plain numbered list |
 | 08 | Email compare | Good email types in; the weak one gets struck through on its problem phrases. | Both shown complete |
 | 09 | FAQ accordion | Plus turns 45 degrees; answer opens via `grid-template-rows: 0fr to 1fr`, 320 ms. | Opens without animation |

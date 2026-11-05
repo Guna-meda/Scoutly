@@ -1,8 +1,7 @@
 import { stage } from '@content/en';
 import { Mark } from '../ui/Mark';
-import { Pill } from '../ui/Pill';
 
-/** Avatar on an ink circle, name, role and the SAMPLE tag. */
+/** Avatar on an ink circle, name, role. */
 export function ChatHeader() {
   return (
     <div className="chat-header">
@@ -13,9 +12,6 @@ export function ChatHeader() {
         <span className="chat-name">{stage.device.name}</span>
         <span className="chat-role">{stage.device.role}</span>
       </div>
-      <Pill tone="lime" kind="tag">
-        {stage.device.sampleTag}
-      </Pill>
     </div>
   );
 }

@@ -828,3 +828,63 @@
     font-size: 12px;
   }
 }
+
+/* Match avatar: initial on the fit colour, replaces the number badge. */
+.match-num {
+  display: none;
+}
+.match-av {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: var(--outline);
+  border-radius: var(--r-s);
+  background: var(--surface);
+  font-size: 18px;
+  font-weight: 700;
+}
+.match-av-lime {
+  background: var(--beat-1);
+}
+.match-av-pink {
+  background: var(--beat-2);
+}
+.match-line {
+  display: block;
+  color: var(--ink);
+}
+.match-line::first-letter {
+  text-transform: uppercase;
+}
+.match {
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+}
+@media (max-width: 1023px) {
+  .match-av {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+}
+@container device (max-height: 419px) {
+  .match-av {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+}
+@container device (max-height: 419px) {
+  .match {
+    padding: 4px 8px;
+    gap: 8px;
+  }
+  .match-main {
+    gap: 0;
+  }
+}
