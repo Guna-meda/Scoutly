@@ -90,7 +90,7 @@ Desktop (>= 1024 px): container 1180 wide, grid `1fr 330px 1fr`, gap 56. All thr
 - Right caption card: same height as the device. "Step N of 3" at top, one sentence at 34 px, fixed 150 x 110 reward slot bottom-left so the card never collapses.
 - The site header is a normal sticky bar above the stage and is never overlapped by it. No full-width banners over the stage.
 
-Phone (< 1024 px): device full width minus 16 px gutters, height `min(440px, 55svh)`, sticky under the top bar. Below it one step card (label, headline, caption, fixed height 168 so nothing shifts), then 44 px prev / dots / next, then the floating pill bar.
+Phone (< 1024 px): device full width minus 16 px gutters, height 440 px (500 px under 360 px wide), so the longest screen is never clipped, sticky under the top bar. Below it one step card (label, headline, caption, fixed height 168 so nothing shifts), then 44 px prev / dots / next, then the floating pill bar.
 
 ## 8. Do and don't
 
