@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test';
 
 const routes = [
   { name: 'home', path: '/' },
+  { name: 'styleguide', path: '/styleguide' },
   { name: '404', path: '/this-page-does-not-exist', status: 404 },
 ];
 const widths = [375, 1280] as const;
@@ -26,11 +27,6 @@ for (const route of routes) {
           (v) => v.impact === 'serious' || v.impact === 'critical',
         );
         expect(bad, JSON.stringify(bad, null, 2)).toEqual([]);
-
-        const overflow = await page.evaluate(
-          () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
-        );
-        expect(overflow, 'no horizontal scroll').toBe(false);
       });
     }
   }

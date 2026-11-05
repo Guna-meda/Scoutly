@@ -15,7 +15,6 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "test:a11y": "playwright test e2e/a11y.spec.ts",
-    "test:visual": "playwright test e2e/visual.spec.ts",
     "lighthouse": "lhci autorun --config=lighthouserc.json",
     "check:links": "tsx scripts/check-links.ts",
     "check:placeholders": "tsx scripts/check-placeholders.ts",
@@ -23,7 +22,8 @@
     "check:content": "tsx scripts/check-content.ts",
     "check:hex": "tsx scripts/check-hex.ts",
     "check:launch": "tsx scripts/check-launch.ts",
-    "verify": "pnpm typecheck && pnpm lint && pnpm test && pnpm check:hex && pnpm check:placeholders && pnpm check:claims && pnpm check:content && pnpm build && pnpm test:a11y && pnpm check:links && pnpm lighthouse"
+    "verify": "pnpm typecheck && pnpm lint && pnpm test && pnpm check:hex && pnpm check:placeholders && pnpm check:claims && pnpm check:content && pnpm build && pnpm test:a11y && pnpm check:links && pnpm lighthouse",
+    "measure:js": "tsx scripts/measure-js.ts"
   },
   "dependencies": {
     "next": "16.4.5",

@@ -1,16 +1,18 @@
 import Link from 'next/link';
 import { global } from '@content/en';
+import { Section } from '@/components/layout/Section';
+import { BodyL, H2 } from '@/components/ui/Text';
 
 export default function NotFound() {
   return (
-    <main id="main" className="mx-auto max-w-content px-4 py-16 lg:px-12 lg:py-24">
-      <h1 className="h2">{global.notFound.title}</h1>
-      <p className="lead">{global.notFound.body}</p>
-      <p className="lead">
-        <Link href="/" className="underline">
+    <Section>
+      <H2 as="h1">{global.notFound.title}</H2>
+      <BodyL className="mt-6">{global.notFound.body}</BodyL>
+      <BodyL className="mt-6">
+        <Link href="/" className="footer-link">
           {global.notFound.homeLink}
         </Link>
-      </p>
-    </main>
+      </BodyL>
+    </Section>
   );
 }

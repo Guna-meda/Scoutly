@@ -64,6 +64,6 @@ CSS first. Use the `motion` package (LazyMotion with `domAnimation`, or only `an
 
 ## 5. Testing motion
 
-- Playwright screenshots of the stage in each beat at 375, 768, 1280, with and without `prefers-reduced-motion`.
+- No screenshot tests. Check the stage by eye at 375, 768 and 1280, with and without reduced motion.
 - A test that scrolls through the stage and asserts the sticky element never leaves the viewport and no horizontal scroll appears.
 - A test that Tab reaches every control in a logical order and a visible focus ring shows.

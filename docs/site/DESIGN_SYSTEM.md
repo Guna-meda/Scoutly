@@ -45,7 +45,7 @@ Bricolage Grotesque (OFL), variable, self-hosted through `next/font/google` with
 | H3 | 28 / 1.1 / -0.02em / 650 | Card titles |
 | Body L | 20 / 1.5 / 0 / 400 | Lead paragraphs |
 | Body | 17 / 1.55 / 0 / 400 | Default (minimum 16 on phones) |
-| UI | 15 / 1.2 / 0.04em / 700 | Buttons, quick replies (SEND, EDIT, DISCARD) |
+| UI | 16 / 1.2 / 0.02em / 700 | Buttons. Quick replies inside the sample device use 15 |
 | Label | 12 / 1.2 / 0.08em / 600, uppercase | Step counters, "SAMPLE" tags |
 
 ## 4. Shape

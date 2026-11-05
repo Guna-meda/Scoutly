@@ -59,7 +59,7 @@ How we hit them
 1. `pnpm typecheck` (TypeScript strict) and `pnpm lint` (ESLint with jsx-a11y).
 2. `pnpm test` unit tests (including the contrast-pair test and the content schema test).
 3. `pnpm test:a11y`: Playwright plus `@axe-core/playwright` on every route at 375 and 1280, in light mode, normal and reduced motion. Zero serious or critical violations.
-4. `pnpm test:visual`: screenshots of the pinned stage in each beat at 375, 768 and 1280 (and 1920 for the home page), normal and reduced motion. Updated deliberately, never auto-accepted.
+4. *(removed by owner decision: no visual regression tests. Check the stage by eye at 375, 768 and 1280.)*
 5. Lighthouse CI against the budgets above, on the built site, mobile preset.
 6. `pnpm check:links`: internal and external link check (external allowed to warn, internal must pass).
 7. `pnpm check:placeholders`: fails on `TODO`, `lorem`, `{{`, `FIXME`, `xxx`, and any text matching `«PH:`. In normal CI, `«PH:` is a warning that prints the list; with `LAUNCH=1` it is a failure.
