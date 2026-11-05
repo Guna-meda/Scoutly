@@ -22,6 +22,7 @@ export function ScreenStack({ beat, size }: { beat: Beat; size?: 'auto' | 'deskt
               key={i}
               className="screen"
               data-state={state}
+              data-screen={i}
               aria-hidden={active ? undefined : true}
               inert={!active}
             >
@@ -42,12 +43,27 @@ export function ScreenStacked({ size }: { size?: 'auto' | 'desktop' | 'phone' })
         <DeviceFrame key={i} beat={i as Beat} size={size}>
           <ChatHeader />
           <div className="chat-body">
-            <div className="screen" data-state="active">
+            <div className="screen" data-state="active" data-screen={i}>
               <Screen />
             </div>
           </div>
         </DeviceFrame>
       ))}
     </div>
+  );
+}
+
+/** One frame showing one screen in its final state (used by the stacked stage). */
+export function StaticScreen({ beat, size }: { beat: Beat; size?: 'auto' | 'desktop' | 'phone' }) {
+  const Screen = screens[beat];
+  return (
+    <DeviceFrame beat={beat} size={size}>
+      <ChatHeader />
+      <div className="chat-body">
+        <div className="screen" data-state="active" data-screen={beat}>
+          <Screen />
+        </div>
+      </div>
+    </DeviceFrame>
   );
 }

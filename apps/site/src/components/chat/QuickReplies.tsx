@@ -1,3 +1,5 @@
+import { Icon } from '../ui/Icon';
+
 type Props = { send: string; edit: string; discard: string };
 
 /**
@@ -10,6 +12,9 @@ export function QuickReplies({ send, edit, discard }: Props) {
       <span className="qr qr-send">{send}</span>
       <span className="qr">{edit}</span>
       <span className="qr">{discard}</span>
+      <span className="rw-plane" aria-hidden="true">
+        <Icon name="plane" size={20} />
+      </span>
     </div>
   );
 }

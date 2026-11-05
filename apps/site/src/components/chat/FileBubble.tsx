@@ -15,7 +15,7 @@ export function FileBubble({ name, tag }: Props) {
           <span className="file-name">{name}</span>
           <span className="caption">{tag}</span>
         </span>
-        <Icon name="paperclip" size={22} />
+        <Icon name="paperclip" size={22} className="rw-clip" />
       </div>
     </Bubble>
   );

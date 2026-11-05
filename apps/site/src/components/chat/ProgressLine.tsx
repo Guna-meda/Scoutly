@@ -12,7 +12,10 @@ export function ProgressLine({ label, state }: Props) {
     <Bubble wide className="progress-bubble">
       <div className="progress-row">
         {state === 'done' ? (
-          <Icon name="check-circle" size={18} className="progress-ok" />
+          <span className="progress-slot">
+            <span className="progress-dot-rw" aria-hidden="true" />
+            <Icon name="check-circle" size={18} className="progress-ok rw-check" />
+          </span>
         ) : (
           <span className="progress-dot" aria-hidden="true" />
         )}

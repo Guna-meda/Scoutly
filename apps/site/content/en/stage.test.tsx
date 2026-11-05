@@ -30,7 +30,8 @@ describe('draft email format (CONTENT.md section 3)', () => {
 });
 
 describe('sample names', () => {
-  const text = JSON.stringify(stage);
+  const { ui: _ui, ...sample } = stage; // UI strings are not sample data
+  const text = JSON.stringify(sample);
   it('uses every sample name', () => {
     for (const n of SAMPLE_NAMES) expect(text).toContain(n);
   });

@@ -1,0 +1,666 @@
+/* Pinned stage (docs/site/MOTION.md section 3, DESIGN_SYSTEM.md section 7). Tokens only. */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-22px) rotate(-16deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+@keyframes dotout {
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+@keyframes checkin {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes press {
+  0% {
+    transform: none;
+  }
+  40% {
+    transform: scale(0.94);
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes fly {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(0);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(130px, -110px) rotate(18deg);
+  }
+}
+@keyframes knob {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(28px);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.stage-section {
+  scroll-margin-top: var(--header-h);
+}
+
+/* ---------- Beat card (shared) ---------- */
+.beat-card {
+  position: relative;
+  border: var(--outline);
+  border-radius: var(--r-l);
+  background: var(--beat-1);
+  overflow: hidden;
+}
+.beat-card[data-tone='2'] {
+  background: var(--beat-2);
+}
+.beat-card[data-tone='3'] {
+  background: var(--beat-3);
+}
+.beat-headline {
+  margin: 0;
+  font-size: clamp(34px, calc(3.2vw + 10px), 52px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+.beat-label,
+.beat-card > .pill {
+  position: absolute;
+  left: 9px;
+  bottom: 9px;
+}
+.beat-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 18px;
+  border: var(--outline);
+  border-radius: var(--r-full);
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.beat-label[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--action-text);
+}
+.beat-icon {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+}
+
+/* ---------- Stacked (server, no-JS, reduced motion) ---------- */
+.stage-stacked {
+  padding-block: var(--section-pad);
+}
+.stk-step {
+  display: grid;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+.stk-step:last-child {
+  margin-bottom: 0;
+}
+.stk-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.beat-card-open {
+  min-height: 220px;
+  padding: 20px 20px 72px;
+}
+.stk-caption {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stk-caption-text {
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+@media (min-width: 768px) {
+  .stk-step {
+    grid-template-columns: 1fr 375px;
+    align-items: center;
+    gap: 48px;
+  }
+}
+
+/* ---------- Pinned wrapper ---------- */
+.stage-pin {
+  --step-len: 70svh;
+  --dev-h: clamp(520px, calc(100svh - var(--header-h) - 120px), 680px);
+  position: relative;
+  height: calc(100svh + 2 * var(--step-len));
+}
+.stage-zone {
+  position: absolute;
+  left: 0;
+  width: 1px;
+  pointer-events: none;
+}
+.stage-zone[data-zone='0'] {
+  top: 0;
+  height: calc(var(--step-len) * 0.5);
+}
+.stage-zone[data-zone='1'] {
+  top: calc(var(--step-len) * 0.5);
+  height: var(--step-len);
+}
+.stage-zone[data-zone='2'] {
+  top: calc(var(--step-len) * 1.5);
+  height: var(--step-len);
+}
+.stage-sticky {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100svh - var(--header-h));
+  display: flex;
+  align-items: center;
+}
+.stage-sticky > .container {
+  width: 100%;
+}
+.stage-pin[data-mode='phone'] .stage-sticky {
+  align-items: flex-start;
+  padding-top: 8px;
+}
+
+/* Desktop grid */
+.stage-grid {
+  display: grid;
+  grid-template-columns: 1fr 330px 1fr;
+  gap: 56px;
+  align-items: start;
+}
+.stage-centre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.beat-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: var(--dev-h);
+}
+.stage-grid .beat-card {
+  flex: none;
+  height: 64px;
+  transition: height var(--dur-4) var(--ease);
+}
+.stage-grid .beat-card[data-active='true'] {
+  height: calc(var(--dev-h) - 2 * 64px - 2 * 12px);
+}
+.beat-headline-wrap {
+  padding: 18px 18px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity var(--dur-3) var(--ease),
+    transform var(--dur-3) var(--ease),
+    visibility 0s linear var(--dur-3);
+}
+[data-active='true'] > .beat-headline-wrap {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity var(--dur-4) var(--ease) 140ms,
+    transform var(--dur-4) var(--ease) 140ms,
+    visibility 0s;
+}
+.caption-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: var(--dev-h);
+  padding: 28px;
+  border: var(--outline);
+  border-radius: var(--r-l);
+  background: var(--surface);
+}
+.caption-stack {
+  display: grid;
+}
+.caption-text {
+  grid-area: 1 / 1;
+  margin: 0;
+  font-size: clamp(20px, calc(2.6vw - 4px), 34px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity var(--dur-3) var(--ease),
+    transform var(--dur-3) var(--ease),
+    visibility 0s linear var(--dur-3);
+}
+.caption-text[data-state='active'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity var(--dur-4) var(--ease) 120ms,
+    transform var(--dur-4) var(--ease) 120ms,
+    visibility 0s;
+}
+
+/* ---------- Controls ---------- */
+.stage-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+.stage-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: var(--outline);
+  border-radius: var(--r-full);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  transition: transform var(--dur-2) var(--ease);
+}
+.stage-nav:active:not(:disabled) {
+  transform: scale(0.97);
+}
+.stage-nav:disabled {
+  background: var(--track);
+  border-style: dashed;
+  cursor: not-allowed;
+}
+.stage-dots {
+  display: flex;
+}
+.stage-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+.stage-dot > span {
+  width: 14px;
+  height: 14px;
+  border: var(--outline);
+  border-radius: var(--r-full);
+  background: var(--surface);
+}
+.stage-dot[aria-current='step'] > span {
+  background: var(--ink);
+}
+.stage-pin button:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+.beat-label[aria-pressed='true']:focus-visible {
+  box-shadow: 0 0 0 3px var(--action-text);
+}
+
+/* ---------- Phone ---------- */
+.stage-phone {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.stage-phone .device {
+  height: 440px;
+}
+.stage-phone .stage-controls {
+  margin-top: 0;
+}
+.step-cards {
+  position: relative;
+  height: 168px;
+}
+.step-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 12px 14px;
+  border: var(--outline);
+  border-radius: var(--r-l);
+  background: var(--beat-1);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity var(--dur-3) var(--ease),
+    transform var(--dur-3) var(--ease),
+    visibility 0s linear var(--dur-3);
+}
+.step-card[data-tone='2'] {
+  background: var(--beat-2);
+}
+.step-card[data-tone='3'] {
+  background: var(--beat-3);
+}
+.step-card[data-state='active'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+.step-headline {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+.step-caption {
+  margin: 0;
+  font-size: 14.5px;
+  line-height: 1.3;
+}
+
+/* ---------- Screen swap (animation 01) ---------- */
+.stage-pin .screen {
+  opacity: 0;
+  filter: blur(var(--blur));
+  transform: translateY(var(--rise));
+  transition:
+    opacity var(--dur-4) var(--ease),
+    filter var(--dur-4) var(--ease),
+    transform var(--dur-4) var(--ease),
+    visibility 0s linear var(--dur-4);
+}
+.stage-pin .screen[data-state='before'] {
+  transform: translateY(-14px);
+}
+.stage-pin .screen[data-state='active'] {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+  transition-delay: 0s;
+}
+
+/* ---------- Rewards (animation 03): replay whenever a screen becomes active ---------- */
+.stage-pin .screen[data-state='active'] > * {
+  animation: rise 380ms var(--ease) both;
+}
+/* beat 1 */
+.stage-pin .screen[data-screen='0'][data-state='active'] > :nth-child(1) {
+  animation: rise 420ms var(--ease) 80ms both;
+}
+.stage-pin .screen[data-screen='0'][data-state='active'] > :nth-child(2) {
+  animation-delay: 640ms;
+}
+.stage-pin .screen[data-screen='0'][data-state='active'] > :nth-child(3) {
+  animation-delay: 1000ms;
+}
+.stage-pin .screen[data-screen='0'][data-state='active'] > :nth-child(4) {
+  animation-delay: 3300ms;
+}
+.stage-pin .screen[data-state='active'] .rw-clip {
+  animation: drop 480ms var(--ease) 360ms both;
+}
+.stage-pin .screen[data-state='active'] .progress-dot-rw {
+  opacity: 1;
+  animation:
+    pulse 700ms ease-in-out 1300ms 2,
+    dotout 200ms var(--ease) 2800ms forwards;
+}
+.stage-pin .screen[data-state='active'] .rw-check {
+  animation: checkin 320ms var(--ease) 2900ms both;
+}
+.stage-pin .screen[data-state='active'] .progress-fill {
+  animation: fill 1700ms var(--ease) 1300ms both;
+}
+/* beat 2 */
+.stage-pin .screen[data-screen='1'][data-state='active'] > :nth-child(1) {
+  animation-delay: 80ms;
+}
+.stage-pin .screen[data-screen='1'][data-state='active'] > :nth-child(3) {
+  animation-delay: 1500ms;
+}
+.stage-pin .screen[data-screen='1'][data-state='active'] > .match-list {
+  animation: none;
+}
+.stage-pin .screen[data-state='active'] .match {
+  animation: rise 380ms var(--ease) both;
+}
+.stage-pin .screen[data-state='active'] .match:nth-child(1) {
+  animation-delay: 320ms;
+}
+.stage-pin .screen[data-state='active'] .match:nth-child(2) {
+  animation-delay: 580ms;
+}
+.stage-pin .screen[data-state='active'] .match:nth-child(3) {
+  animation-delay: 840ms;
+}
+.stage-pin .screen[data-state='active'] .match:nth-child(1) .pill {
+  animation: pop 360ms var(--ease) 620ms both;
+}
+.stage-pin .screen[data-state='active'] .match:nth-child(2) .pill {
+  animation: pop 360ms var(--ease) 880ms both;
+}
+.stage-pin .screen[data-state='active'] .match:nth-child(3) .pill {
+  animation: pop 360ms var(--ease) 1140ms both;
+}
+/* beat 3 */
+.stage-pin .screen[data-screen='2'][data-state='active'] > :nth-child(1) {
+  animation: rise 420ms var(--ease) 80ms both;
+}
+.stage-pin .screen[data-screen='2'][data-state='active'] > :nth-child(2) {
+  animation: none;
+}
+.stage-pin .screen[data-screen='2'][data-state='active'] > :nth-child(3) {
+  animation: rise 420ms var(--ease) 2500ms both;
+}
+.quick-replies {
+  position: relative;
+}
+.rw-plane {
+  display: none;
+  position: absolute;
+  left: 30px;
+  top: 8px;
+  opacity: 0;
+  pointer-events: none;
+}
+.stage-pin .screen[data-state='active'] .rw-plane {
+  display: inline-flex;
+  animation: fly 800ms ease-in 1700ms both;
+}
+.stage-pin .screen[data-state='active'] .qr-send {
+  animation: press 320ms var(--ease) 1500ms both;
+}
+.progress-slot {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+.progress-dot-rw {
+  position: absolute;
+  inset: 4px;
+  border-radius: var(--r-full);
+  background: var(--ink);
+  opacity: 0;
+}
+.progress-fill {
+  transform-origin: left;
+}
+
+/* Caption card reward slot: fixed 150 x 110 so nothing shifts */
+.reward-slot {
+  position: relative;
+  flex: none;
+  width: 150px;
+  height: 110px;
+  margin-top: auto;
+}
+.reward {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--dur-2) linear,
+    visibility 0s linear var(--dur-2);
+}
+.reward[data-state='active'] {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.reward:nth-child(2) {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.rwd-clip,
+.rwd-check {
+  display: inline-flex;
+}
+.reward[data-state='active'] .rwd-clip {
+  animation: drop 480ms var(--ease) 120ms both;
+}
+.reward[data-state='active'] .rwd-check {
+  animation: checkin 320ms var(--ease) 900ms both;
+}
+.reward[data-state='active'] .rwd-pill {
+  animation: pop 360ms var(--ease) both;
+}
+.reward[data-state='active'] .rwd-pill:nth-child(1) {
+  animation-delay: 120ms;
+}
+.reward[data-state='active'] .rwd-pill:nth-child(2) {
+  animation-delay: 380ms;
+}
+.reward[data-state='active'] .rwd-pill:nth-child(3) {
+  animation-delay: 640ms;
+}
+.rwd-toggle {
+  position: relative;
+  width: 64px;
+  height: 36px;
+  border: var(--outline);
+  border-radius: var(--r-full);
+  background: var(--track);
+}
+.rwd-toggle-on {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-full);
+  background: var(--beat-1);
+  opacity: 0;
+}
+.rwd-knob {
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--r-full);
+  background: var(--ink);
+}
+.reward[data-state='active'] .rwd-toggle-on {
+  animation: fade-in var(--dur-2) linear 600ms both;
+}
+.reward[data-state='active'] .rwd-knob {
+  animation: knob 520ms var(--spring) 500ms both;
+}
