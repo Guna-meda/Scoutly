@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Scoutly chat screens</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;display=swap">
+<style>
+body{margin:0}
+@keyframes rise{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:0;transform:scale(.6)}60%{opacity:1;transform:scale(1.1)}100%{opacity:1;transform:scale(1)}}
+@keyframes drop{from{opacity:0;transform:translateY(-22px) rotate(-16deg)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}}
+@keyframes dotout{to{opacity:0;transform:scale(0)}}
+@keyframes checkin{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+@keyframes fill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes press{0%{transform:none}40%{transform:scale(.94)}100%{transform:none}}
+@keyframes fly{0%{opacity:0;transform:translate(0,0) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(130px,-110px) rotate(18deg)}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition-duration:1ms !important}}
+</style>
+</helmet>
+<div style="position: relative; width: 100%; height: 100%; min-height: 560px; background: #E9E5DA; overflow: hidden; font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: #141414; font-size: 13.5px; line-height: 1.35">
+
+  <!-- chat header -->
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 60px; box-sizing: border-box; background: #FFFFFF; border-bottom: 2px solid #141414; display: flex; align-items: center; gap: 10px; padding: 0 14px; z-index: 2">
+    <div style="width: 34px; height: 34px; border-radius: 50%; background: #141414; display: flex; align-items: center; justify-content: center; flex: none">
+      <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke-dasharray="52 17.1"></circle><path d="M14 18 L25 7 M17.5 7 H25 V14.5"></path></svg>
+    </div>
+    <div style="display: flex; flex-direction: column; flex: 1 1 0; min-width: 0">
+      <span style="font-size: 15px; font-weight: 700">Scoutly</span>
+      <span style="font-size: 12px; color: #57524C">talent agent</span>
+    </div>
+    <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; border: 2px solid #141414; border-radius: 999px; padding: 2px 9px; background: #FF9EC7">SAMPLE</span>
+  </div>
+
+  <!-- screen 1: Simple -->
+  <div aria-hidden="{{s1.hidden}}" style="{{s1.style}}">
+    <span style="align-self: center; font-size: 11.5px; color: #57524C; background: #FFFFFF; border-radius: 999px; padding: 3px 10px">Today · sample conversation</span>
+    <div style="{{s1.fileBubble}}">
+      <div style="display: flex; gap: 10px; align-items: center">
+        <div style="width: 36px; height: 44px; box-sizing: border-box; border: 2px solid #141414; border-radius: 6px; background: #FFFFFF; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 5px; font-size: 10px; font-weight: 800; flex: none">PDF</div>
+        <div style="display: flex; flex-direction: column">
+          <span style="font-weight: 700">aarav_resume.pdf</span>
+          <span style="font-size: 12px; color: #57524C">Sample file</span>
+        </div>
+      </div>
+      <svg style="{{s1.clipStyle}}" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#141414" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5l-7.8 7.8a5 5 0 0 1-7-7l8-8a3.3 3.3 0 0 1 4.7 4.7l-8 8a1.7 1.7 0 0 1-2.4-2.4l7.3-7.3"></path></svg>
+    </div>
+    <div style="{{s1.bubbleA}}">Got it, Aarav. I'm reading your work now.</div>
+    <div style="{{s1.bubbleB}}">
+      <div style="display: flex; align-items: center; gap: 10px">
+        <span style="position: relative; width: 16px; height: 16px; flex: none">
+          <span style="{{s1.dotStyle}}"></span>
+          <svg style="{{s1.checkStyle}}" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#1F7A4D" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+        </span>
+        <span style="font-weight: 600">Reading your work</span>
+      </div>
+      <div style="margin-top: 9px; height: 8px; border-radius: 99px; background: #DDD8CA; overflow: hidden">
+        <div style="{{s1.fillStyle}}"></div>
+      </div>
+    </div>
+    <div style="{{s1.bubbleC}}">I'll show you matches first. Nothing gets written until you pick one.</div>
+  </div>
+
+  <!-- screen 2: Specific -->
+  <div aria-hidden="{{s2.hidden}}" style="{{s2.style}}">
+    <div style="{{s2.intro}}">3 matches for you. Sample data, not real companies.</div>
+    <sc-for list="{{matches}}" as="m" hint-placeholder-count="3">
+      <div style="{{m.cardStyle}}">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px">
+          <span style="font-size: 14.5px; font-weight: 700">{{m.n}}. {{m.name}}</span>
+          <span style="{{m.pillStyle}}">{{m.fit}}</span>
+        </div>
+        <span style="font-size: 12.5px">{{m.meta}}</span>
+        <span style="font-size: 12.5px">Why: {{m.why}}</span>
+        <span style="font-size: 11.5px; color: #57524C">Source: {{m.source}}</span>
+      </div>
+    </sc-for>
+    <div style="{{s2.outro}}">Reply with a number and I'll draft the email.</div>
+  </div>
+
+  <!-- screen 3: Yours -->
+  <div aria-hidden="{{s3.hidden}}" style="{{s3.style}}">
+    <div style="{{s3.draftBubble}}">
+      <span style="font-size: 11.5px; color: #57524C; font-weight: 600">Draft for Priya at Fernway · email verified · sample</span>
+      <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 8px; font-size: 13px; line-height: 1.4">
+        <span>Hi Priya,</span>
+        <span>I'm Aarav, a frontend engineer. I rebuilt my last team's checkout flow and moved it onto a shared component library.</span>
+        <span>Your public roadmap says Fernway is taking its product to mobile web next, and I've spent two years on exactly that.</span>
+        <span>Would a 15-minute call this week make sense? My resume is attached.</span>
+        <span>Thanks, Aarav</span>
+      </div>
+    </div>
+    <div style="position: relative; display: flex; gap: 8px">
+      <button type="button" style="{{s3.sendStyle}}">SEND</button>
+      <button type="button" style="flex: 1 1 0; height: 44px; border-radius: 12px; border: 2px solid #141414; background: #FFFFFF; color: #141414; font-family: inherit; font-size: 14px; font-weight: 700; letter-spacing: 0.04em">EDIT</button>
+      <button type="button" style="flex: 1 1 0; height: 44px; border-radius: 12px; border: 2px solid #141414; background: #FFFFFF; color: #141414; font-family: inherit; font-size: 14px; font-weight: 700; letter-spacing: 0.04em">DISCARD</button>
+      <svg style="{{s3.planeStyle}}" viewBox="0 0 24 24" width="28" height="28" fill="#D7FF3F" stroke="#141414" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M3 11.5L21 3l-6.5 18-3.2-7.3z"></path></svg>
+    </div>
+    <div style="{{s3.sentNote}}">Sent from your own Gmail. I follow up on day 4 to 5 and day 12 to 14, and stop the moment anyone replies.</div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"beat":{"editor":null,"default":0},"$preview":{"width":330,"height":620}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const b = Number(this.props.beat ?? 0);
+    const E = 'cubic-bezier(.22,1,.36,1)';
+    const scr = (i) => {
+      const a = b === i;
+      return {
+        a,
+        hidden: a ? 'false' : 'true',
+        style: `position:absolute;top:60px;left:0;right:0;bottom:0;box-sizing:border-box;padding:14px 12px;display:flex;flex-direction:column;gap:8px;transition:opacity 480ms ${E},filter 480ms ${E},transform 480ms ${E};opacity:${a ? 1 : 0};filter:blur(${a ? 0 : 10}px);transform:translateY(${a ? 0 : (i < b ? -14 : 18)}px);pointer-events:${a ? 'auto' : 'none'}`
+      };
+    };
+    const an = (a, name, dur, delay, extra) => a ? `animation:${name} ${dur}ms ${E} ${delay}ms both;${extra || ''}` : `animation:none;${extra || ''}`;
+    const bubbleIn = 'align-self:flex-start;max-width:86%;box-sizing:border-box;background:#FFFFFF;border:2px solid #141414;border-radius:4px 16px 16px 16px;padding:9px 12px;';
+    const s1 = scr(0), s2 = scr(1), s3 = scr(2);
+
+    // screen 1
+    s1.fileBubble = an(s1.a, 'rise', 420, 80, 'position:relative;align-self:flex-end;max-width:84%;box-sizing:border-box;background:#D7FF3F;border:2px solid #141414;border-radius:16px 16px 4px 16px;padding:10px 12px;');
+    s1.clipStyle = an(s1.a, 'drop', 480, 360, 'position:absolute;top:-12px;right:10px');
+    s1.bubbleA = an(s1.a, 'rise', 380, 640, bubbleIn);
+    s1.bubbleB = an(s1.a, 'rise', 380, 1000, bubbleIn + 'width:78%;');
+    s1.dotStyle = s1.a ? `position:absolute;inset:3px;border-radius:50%;background:#141414;animation:pulse 700ms ease-in-out 1300ms 2, dotout 200ms ${E} 2800ms forwards` : 'position:absolute;inset:3px;border-radius:50%;background:#141414;animation:none';
+    s1.checkStyle = s1.a ? `position:absolute;inset:0;opacity:0;animation:checkin 320ms ${E} 2900ms both` : 'position:absolute;inset:0;opacity:0;animation:none';
+    s1.fillStyle = s1.a ? `height:100%;background:#141414;border-radius:99px;transform-origin:left;animation:fill 1700ms ${E} 1300ms both` : 'height:100%;background:#141414;border-radius:99px;transform-origin:left;animation:none';
+    s1.bubbleC = an(s1.a, 'rise', 380, 3300, bubbleIn);
+
+    // screen 2
+    s2.intro = an(s2.a, 'rise', 380, 80, bubbleIn);
+    s2.outro = an(s2.a, 'rise', 380, 1500, bubbleIn);
+    const mm = [
+      { n: 1, name: 'Fernway', meta: 'Seed · Bengaluru · Hiring: Frontend engineer', why: 'you moved a checkout flow onto a component library.', source: 'company careers page', fit: 'Strong fit', bg: '#FFFFFF' },
+      { n: 2, name: 'Kite & Loom', meta: 'Series A · Remote India · No open role, cold intro', why: 'your design-system work matches their public hiring note.', source: 'founder blog post', fit: 'Good fit', bg: '#D7FF3F' },
+      { n: 3, name: 'Northwind Labs', meta: 'Seed · Pune · Hiring: Product engineer', why: 'you shipped features end to end with a small team.', source: 'job board listing', fit: 'Stretch', bg: '#FF9EC7' }
+    ];
+    const matches = mm.map((m, i) => ({
+      n: m.n, name: m.name, meta: m.meta, why: m.why, source: m.source, fit: m.fit,
+      cardStyle: an(s2.a, 'rise', 380, 320 + i * 260, 'box-sizing:border-box;background:#FFFFFF;border:2px solid #141414;border-radius:14px;padding:9px 12px;display:flex;flex-direction:column;gap:3px;'),
+      pillStyle: an(s2.a, 'pop', 360, 620 + i * 260, `flex:none;font-size:11.5px;font-weight:700;border:2px solid #141414;border-radius:999px;padding:1px 9px;background:${m.bg};`)
+    }));
+
+    // screen 3
+    s3.draftBubble = an(s3.a, 'rise', 420, 80, bubbleIn + 'max-width:96%;');
+    s3.sendStyle = (s3.a ? `animation:press 320ms ${E} 1500ms both;` : 'animation:none;') + 'flex:1 1 0;height:44px;border-radius:12px;border:2px solid #141414;background:#141414;color:#FFFFFF;font-family:inherit;font-size:14px;font-weight:700;letter-spacing:0.04em';
+    s3.planeStyle = s3.a ? `position:absolute;left:30px;top:8px;opacity:0;pointer-events:none;animation:fly 800ms ease-in 1700ms both` : 'position:absolute;left:30px;top:8px;opacity:0;pointer-events:none;animation:none';
+    s3.sentNote = an(s3.a, 'rise', 420, 2500, bubbleIn + 'font-size:12.5px;');
+
+    return { s1, s2, s3, matches };
+  }
+}
+</script>
+</body>
+</html>
