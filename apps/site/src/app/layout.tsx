@@ -20,6 +20,8 @@ const font = Bricolage_Grotesque({
   variable: '--font-sans',
 });
 
+const jsFlag = { __html: "document.documentElement.classList.add('js')" };
+
 export const metadata: Metadata = {
   title: global.siteName,
   description: hero.lead,
@@ -32,9 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={font.variable} suppressHydrationWarning>
       <head>
         {/* Before first paint: lets CSS enable the pinned stage. Without JS the stacked layout shows. */}
-        <script
-          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
-        />
+        <script dangerouslySetInnerHTML={jsFlag} />
       </head>
       <body>
         <SkipLink />
