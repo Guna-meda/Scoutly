@@ -7,12 +7,16 @@ import { Icon, iconNames } from '@/components/ui/Icon';
 import { Mark } from '@/components/ui/Mark';
 import { Pill } from '@/components/ui/Pill';
 import { Body, BodyL, Display, H2, H3, Label, UI } from '@/components/ui/Text';
+import { ScreenStack } from '@/components/chat/ScreenStack';
 import { isStyleguideEnabled } from '@/lib/site';
+import { BeatFlip } from './BeatFlip';
 
 export const metadata: Metadata = {
   title: sg.title,
   robots: { index: false, follow: false },
 };
+
+const beats = [0, 1, 2] as const;
 
 const surfaces = [
   ['bg', 'bg-bg'],
@@ -111,6 +115,37 @@ export default function StyleguidePage() {
           <span className="rounded-m bg-action p-3 text-action-text">
             <Mark size={32} />
           </span>
+        </div>
+      </Section>
+
+      <Section labelledBy="sg-device" className="border-t-2 border-line">
+        <H2 id="sg-device">{sg.sections.device}</H2>
+        <H3 as="h3" className="mt-8">
+          {sg.sections.deviceDesktop}
+        </H3>
+        <div className="mt-4 flex flex-wrap items-start gap-6">
+          {beats.map((b) => (
+            <ScreenStack key={b} beat={b} size="desktop" />
+          ))}
+        </div>
+        <H3 as="h3" className="mt-12">
+          {sg.sections.devicePhone}
+        </H3>
+        <div className="mt-4 flex flex-wrap items-start gap-6">
+          {beats.map((b) => (
+            <ScreenStack key={b} beat={b} size="phone" />
+          ))}
+        </div>
+        <H3 as="h3" className="mt-12">
+          {sg.sections.deviceStack}
+        </H3>
+        <div className="mt-4">
+          <BeatFlip
+            labels={beats.map((b) => `${sg.sections.beatPrefix} ${b + 1}`)}
+            stacks={beats.map((b) => (
+              <ScreenStack key={b} beat={b} size="desktop" />
+            ))}
+          />
         </div>
       </Section>
 

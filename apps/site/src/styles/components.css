@@ -413,3 +413,288 @@
   outline: 3px solid var(--ink);
   outline-offset: 3px;
 }
+
+/* ---------- Device frame and chat (W02) ---------- */
+.device {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: min(440px, 55svh);
+  border: var(--outline);
+  border-radius: var(--r-xl);
+  background: var(--surface);
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .device {
+    width: 330px;
+    height: clamp(520px, calc(100svh - var(--header-h) - 120px), 680px);
+  }
+}
+/* Fixed sizes for the styleguide */
+.device-desktop {
+  width: 330px;
+  height: 680px;
+}
+.device-phone {
+  width: min(100%, 375px);
+  height: 440px;
+}
+.chat-header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 60px;
+  padding: 0 14px;
+  background: var(--surface);
+  border-bottom: var(--outline);
+}
+.chat-avatar {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--r-full);
+  background: var(--action);
+  color: var(--action-text);
+}
+.chat-title {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+}
+.chat-name {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.chat-role {
+  font-size: 12px;
+  line-height: 1.2;
+  color: var(--ink-2); /* on --surface: allowed */
+}
+.chat-body {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  background: var(--chat-bg);
+}
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  font-size: 13.5px;
+  line-height: 1.25;
+  overflow: hidden;
+}
+.screen[data-state='before'],
+.screen[data-state='after'] {
+  visibility: hidden;
+}
+.bubble {
+  box-sizing: border-box;
+  max-width: 88%;
+  padding: 8px 12px;
+  border: var(--outline);
+  background: var(--surface);
+  border-radius: 4px 16px 16px 16px;
+  align-self: flex-start;
+}
+.bubble-out {
+  align-self: flex-end;
+  background: var(--beat-1);
+  border-radius: 16px 16px 4px 16px;
+}
+.bubble-wide {
+  max-width: 100%;
+  width: 100%;
+}
+.caption {
+  font-size: 12px;
+  color: var(--ink-2); /* only on surface or beat-1 bubbles */
+}
+.file-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.file-icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 44px;
+  border: var(--outline);
+  border-radius: 6px;
+  background: var(--surface);
+}
+.file-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.file-name {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+.progress-ok {
+  color: var(--ok);
+}
+.progress-dot {
+  width: 10px;
+  height: 10px;
+  margin: 3px;
+  border-radius: var(--r-full);
+  background: var(--ink);
+}
+.progress-track {
+  margin-top: 8px;
+  height: 8px;
+  border-radius: var(--r-full);
+  background: var(--track);
+  overflow: hidden;
+}
+.progress-fill-done {
+  width: 100%;
+}
+.progress-fill-reading {
+  width: 55%;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: var(--r-full);
+  background: var(--ink);
+}
+.match-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.match {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 12px;
+  border: var(--outline);
+  border-radius: var(--r-m);
+  background: var(--surface);
+}
+.match-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.match-name {
+  font-size: 14.5px;
+  font-weight: 700;
+}
+.match-line {
+  font-size: 12.5px;
+}
+.match-source {
+  font-size: 11.5px;
+  color: var(--ink-2); /* on --surface: allowed */
+}
+.draft {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.draft-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.draft-body p {
+  margin: 0;
+}
+.quick-replies {
+  display: flex;
+  gap: 8px;
+}
+/* Pictures of buttons, not controls: no tabindex, no role, no handlers. */
+.qr {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  border: var(--outline);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: var(--tracking-ui);
+}
+.qr-send {
+  background: var(--action);
+  color: var(--action-text);
+}
+.sent-note {
+  font-size: 12.5px;
+}
+/* Compact fit pill inside match cards */
+.match .pill {
+  min-height: 20px;
+  padding: 0 9px;
+}
+.screen {
+  gap: 6px;
+  padding: 10px;
+}
+.bubble {
+  padding: 6px 12px;
+}
+.match {
+  padding: 6px 12px;
+}
+.match-list {
+  gap: 6px;
+}
+/* Phones: tighten spacing, never the font size, so the last element stays visible. */
+@media (max-width: 1023px) {
+  .screen {
+    gap: 4px;
+    padding: 8px;
+  }
+  .bubble {
+    padding: 4px 10px;
+  }
+  .match {
+    padding: 4px 10px;
+    gap: 0;
+  }
+  .match-list {
+    gap: 4px;
+  }
+  .draft-body {
+    gap: 4px;
+    margin-top: 2px;
+  }
+  .progress-track {
+    margin-top: 5px;
+  }
+}

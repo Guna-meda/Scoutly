@@ -45,6 +45,24 @@ Requires Node 22 and pnpm 9.15. The build downloads the Bricolage Grotesque font
 - `scripts/links-pending.json` lists routes and anchors that do not exist yet. `check:links` warns for them; `check:launch` fails while the list is non-empty. Empty it in W06.
 - There are no screenshot baselines and no visual-regression job by decision (W01).
 
+## Device and chat screens (W02)
+
+Static, server-rendered markup. Sample data only, every device carries a SAMPLE tag.
+
+```
+DeviceFrame (role=group, "Sample WhatsApp-style chat, step n of 3")
+  ChatHeader (Mark avatar, name, role, SAMPLE Pill)
+  .chat-body
+    ScreenSimple   FileBubble, Bubble, ProgressLine (done), Bubble
+    ScreenSpecific Bubble, ol > MatchCard x3 (fit Pill with words), Bubble
+    ScreenYours    DraftBubble (article), QuickReplies (not focusable), SentNote
+```
+
+- `ScreenStack beat={0|1|2}` layers the three screens in one frame. `beat` is the only input: each screen gets `data-state="active|before|after"`; non-active screens are `visibility:hidden`, `aria-hidden` and `inert`. No transitions (W03 adds the cross-fade).
+- `ScreenStacked` renders three frames in sequence, each fully visible, for the reduced-motion and no-JS layout.
+- All copy lives in `content/en/stage.ts` (with `SAMPLE_NAMES`). `QuickReplies` are plain spans styled like buttons: no tabindex, no role, no handlers.
+- `/styleguide` has a Device section: three screens at desktop and phone size, and a stack with a dev-only beat control (`BeatFlip`, the only client code in this phase).
+
 ## Content and placeholders
 
 All user-facing copy lives in `content/en/*.ts`, validated by zod schemas in `content/en/schema.ts`. Components import from `@content/en` and never contain strings.

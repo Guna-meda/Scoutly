@@ -115,3 +115,44 @@ export const placeholdersSchema = z.object({
   og_image_copy: nonEmpty,
   verification_method: nonEmpty,
 });
+
+const match = z.object({
+  name: nonEmpty,
+  meta: nonEmpty,
+  why: nonEmpty,
+  source: nonEmpty,
+  fit: nonEmpty,
+});
+
+export const stageSchema = z.object({
+  device: z.object({
+    ariaLabel: nonEmpty, // contains {n}
+    name: nonEmpty,
+    role: nonEmpty,
+    sampleTag: nonEmpty,
+  }),
+  beats: z.array(z.object({ label: nonEmpty, headline: nonEmpty, caption: nonEmpty })).length(3),
+  simple: z.object({
+    fileName: nonEmpty,
+    fileTag: nonEmpty,
+    reply: nonEmpty,
+    progressLabel: nonEmpty,
+    next: nonEmpty,
+  }),
+  specific: z.object({
+    intro: nonEmpty,
+    whyLabel: nonEmpty,
+    sourceLabel: nonEmpty,
+    matches: z.array(match).length(3),
+    outro: nonEmpty,
+  }),
+  yours: z.object({
+    draftHeader: nonEmpty,
+    greeting: nonEmpty,
+    paragraphs: z.array(nonEmpty).length(3),
+    signoff: nonEmpty,
+    quickReplies: z.object({ send: nonEmpty, edit: nonEmpty, discard: nonEmpty }),
+    sentNote: nonEmpty,
+  }),
+});
+export type StageContent = z.infer<typeof stageSchema>;

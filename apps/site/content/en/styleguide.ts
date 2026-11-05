@@ -12,6 +12,11 @@ export const styleguide = styleguideSchema.parse({
     layout: 'Layout',
     shell: 'Shell',
     join: 'Join target',
+    device: 'Device',
+    deviceDesktop: 'Desktop size, three screens',
+    devicePhone: 'Phone size, three screens',
+    deviceStack: 'Screen stack with a beat control',
+    beatPrefix: 'Beat',
   },
   sample: 'Sample',
   buttonLabels: {

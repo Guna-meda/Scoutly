@@ -3,6 +3,7 @@ export { hero } from './hero';
 export { nav } from './nav';
 export { footer } from './footer';
 export { styleguide } from './styleguide';
+export { stage, SAMPLE_NAMES, deviceLabel } from './stage';
 export { flags } from './flags';
 export { placeholders } from './placeholders';
 export { ph, isPlaceholderValue } from './ph';
