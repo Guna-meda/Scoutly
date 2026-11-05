@@ -4,3 +4,8 @@ import type { PlaceholderKey } from './schema';
 export function ph<K extends PlaceholderKey>(key: K): `«PH:${K}»` {
   return `«PH:${key}»`;
 }
+
+/** True when a content value is still a placeholder marker. */
+export function isPlaceholderValue(value: string): boolean {
+  return value.includes('«PH:');
+}

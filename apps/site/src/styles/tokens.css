@@ -1,3 +1,5 @@
+/* Breakpoints (Tailwind theme, see globals.css): xs 375, md 768, lg 1024, xl 1280, 2xl 1920.
+   Desktop starts at lg (1024). Phone-first: unprefixed styles are the phone styles. */
 /* Source of truth: docs/site/DESIGN_SYSTEM.md sections 2-4 and docs/site/MOTION.md section 1.
    The only file allowed to contain hex values. */
 :root {
@@ -59,6 +61,11 @@
   --gutter: 48px;
   --max-w: 1180px;
   --tap: 44px;
+
+  /* Shell (W01) */
+  --header-h: 64px; /* fixed block size of the sticky header; stage and anchors use it */
+  --pill-h: 52px; /* floating pill / help bubble height */
+  --pill-gap: 16px;
 
   /* Motion */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);

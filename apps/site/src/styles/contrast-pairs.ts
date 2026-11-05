@@ -50,12 +50,17 @@ export const contrastPairs: readonly ContrastPair[] = [
   // status
   { fg: 'ok', bg: 'surface', kind: 'text' },
   { fg: 'warn', bg: 'surface', kind: 'text' },
+  // disabled button: ink on track (no opacity)
+  { fg: 'ink', bg: 'track', kind: 'text' },
+  // focus ring: ink ring on page ground, white inner ring on ink fill
+  { fg: 'action-text', bg: 'action', kind: 'ui' },
   // outlines and icons against every surface they sit on
   { fg: 'line', bg: 'bg', kind: 'ui' },
   { fg: 'line', bg: 'surface', kind: 'ui' },
   { fg: 'line', bg: 'beat-1', kind: 'ui' },
   { fg: 'line', bg: 'beat-2', kind: 'ui' },
   { fg: 'line', bg: 'chat-bg', kind: 'ui' },
+  { fg: 'line', bg: 'track', kind: 'ui' },
 ];
 
 /** Combinations that must never appear in `contrastPairs` (DESIGN_SYSTEM.md section 2 rules). */

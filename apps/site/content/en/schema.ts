@@ -24,14 +24,63 @@ const nonEmpty = z.string().min(1);
 
 export const globalSchema = z.object({
   siteName: nonEmpty,
+  homeLinkLabel: nonEmpty,
   primaryButton: nonEmpty,
   secondaryButton: nonEmpty,
   nav: z.object({ howItWorks: nonEmpty, privacy: nonEmpty, faq: nonEmpty }),
+  mainNavLabel: nonEmpty,
+  menu: z.object({ label: nonEmpty, panelLabel: nonEmpty }),
+  helpLabel: nonEmpty,
+  sampleTag: nonEmpty,
   skipToContent: nonEmpty,
   footerDisclaimer: nonEmpty,
   notFound: z.object({ title: nonEmpty, body: nonEmpty, homeLink: nonEmpty }),
 });
 export type GlobalContent = z.infer<typeof globalSchema>;
+
+const link = z.object({ label: nonEmpty, href: nonEmpty });
+
+export const navSchema = z.object({
+  items: z.array(link).min(1),
+});
+export type NavContent = z.infer<typeof navSchema>;
+
+export const footerSchema = z.object({
+  legalLabel: nonEmpty,
+  legalLinks: z.array(link).min(1),
+  contactLabel: nonEmpty,
+  contactValue: nonEmpty,
+  languageNote: nonEmpty,
+  disclaimer: nonEmpty,
+});
+export type FooterContent = z.infer<typeof footerSchema>;
+
+export const styleguideSchema = z.object({
+  title: nonEmpty,
+  intro: nonEmpty,
+  sections: z.record(z.string(), nonEmpty),
+  sample: nonEmpty,
+  buttonLabels: z.object({
+    primary: nonEmpty,
+    secondary: nonEmpty,
+    disabled: nonEmpty,
+    loading: nonEmpty,
+    link: nonEmpty,
+  }),
+  fitLabels: z.object({ strong: nonEmpty, good: nonEmpty, stretch: nonEmpty }),
+  typeSamples: z.object({
+    display: nonEmpty,
+    h2: nonEmpty,
+    h3: nonEmpty,
+    bodyL: nonEmpty,
+    body: nonEmpty,
+    ui: nonEmpty,
+    label: nonEmpty,
+    muted: nonEmpty,
+  }),
+  joinTarget: nonEmpty,
+});
+export type StyleguideContent = z.infer<typeof styleguideSchema>;
 
 export const heroSchema = z.object({
   eyebrow: nonEmpty,
