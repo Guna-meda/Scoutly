@@ -10,6 +10,7 @@ export type TokenName =
   | 'beat-1'
   | 'beat-2'
   | 'beat-3'
+  | 'beat-4'
   | 'action'
   | 'action-text'
   | 'chat-bg'
@@ -39,6 +40,7 @@ export const contrastPairs: readonly ContrastPair[] = [
   { fg: 'ink', bg: 'beat-1', kind: 'text' },
   { fg: 'ink', bg: 'beat-2', kind: 'text' },
   { fg: 'ink', bg: 'beat-3', kind: 'text' },
+  { fg: 'ink', bg: 'beat-4', kind: 'text' },
   { fg: 'ink', bg: 'chat-bg', kind: 'text' },
   // ink-2 captions: allowed surfaces only (never pink or blue)
   { fg: 'ink-2', bg: 'bg', kind: 'text' },
@@ -60,6 +62,7 @@ export const contrastPairs: readonly ContrastPair[] = [
   { fg: 'line', bg: 'beat-1', kind: 'ui' },
   { fg: 'line', bg: 'beat-2', kind: 'ui' },
   { fg: 'line', bg: 'beat-3', kind: 'ui' },
+  { fg: 'line', bg: 'beat-4', kind: 'ui' },
   { fg: 'line', bg: 'chat-bg', kind: 'ui' },
   { fg: 'line', bg: 'track', kind: 'ui' },
 ];

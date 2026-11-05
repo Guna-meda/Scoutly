@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from './contact';
 import { ph } from './ph';
 
 /**
@@ -79,7 +80,7 @@ export const privacy: LegalDoc = {
       paragraphs: [
         `Operator: ${ph('legal_entity')}.`,
         `Grievance officer: ${ph('grievance_officer')}.`,
-        `Contact: ${ph('contact_email')}.`,
+        `Contact: ${CONTACT_EMAIL}.`,
         `Deletion requests are answered within: ${ph('deletion_sla')}.`,
       ],
     },

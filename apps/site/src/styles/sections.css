@@ -115,10 +115,10 @@
   background: var(--beat-1);
 }
 .feature[data-tone='2'] {
-  background: var(--beat-2);
+  background: var(--beat-3);
 }
 .feature[data-tone='3'] {
-  background: var(--beat-3);
+  background: var(--beat-4);
 }
 .feature-link {
   display: grid;
@@ -621,7 +621,7 @@
 }
 span[data-placeholder='true'] {
   color: var(--ink);
-  background: var(--beat-2);
+  background: var(--beat-1);
   padding: 0 4px;
   border-radius: 4px;
 }

@@ -984,3 +984,9 @@
 .match-name {
   font-size: 15.5px;
 }
+.pill-blue {
+  background: var(--beat-3);
+}
+.pill-green {
+  background: var(--beat-4);
+}

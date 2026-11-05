@@ -3,7 +3,7 @@ import { flags, global, hero, ph, placeholderKeys, placeholders } from './index'
 
 describe('content', () => {
   it('ph() returns the marker string', () => {
-    expect(ph('contact_email')).toBe('«PH:contact_email»');
+    expect(ph('whatsapp_number')).toBe('«PH:whatsapp_number»');
   });
   it('has every placeholder key from CONTENT.md', () => {
     expect(Object.keys(placeholders).sort()).toEqual([...placeholderKeys].sort());

@@ -6,7 +6,7 @@ import { Pill } from '../ui/Pill';
 import { fill } from '@/lib/stage-mode';
 
 export const beatIcons: readonly IconName[] = ['bolt', 'target', 'check-circle'];
-export const beatTones = ['lime', 'pink', 'white'] as const;
+export const beatTones = ['lime', 'blue', 'green'] as const;
 
 /** Three steps in a vertical sequence: card, caption and a static frame each. */
 export function StageStacked() {

@@ -140,7 +140,7 @@ Trimmed to six on 2026-11-05 at the owner's request. Do not add the dropped ones
 
 ## 11. Footer
 
-Legal links (Privacy, Terms, Cookie preferences, Data deletion request, Security) · Contact `«PH:contact_email»` · Language note: "English for now. More languages later." · Not affiliated with WhatsApp or Meta.
+Legal links (Privacy, Terms, Cookie preferences, Data deletion request, Security) · Contact `meda.gunavathi25@gmail.com` · Language note: "English for now. More languages later." · Not affiliated with WhatsApp or Meta.
 
 ## Placeholder list
 
@@ -149,7 +149,6 @@ Every placeholder is rendered visibly in preview builds (as `«PH:key»`) and **
 | Key | What I need from the owner |
 |---|---|
 | `whatsapp_number` | Scoutly's WhatsApp number (env var `NEXT_PUBLIC_WHATSAPP_NUMBER`) |
-| `contact_email` | Public contact address |
 | `legal_entity` | Company legal name and registered address |
 | `grievance_officer` | DPDP grievance officer name and contact |
 | `deletion_sla` | How fast deletion requests are handled |

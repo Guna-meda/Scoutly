@@ -1,5 +1,5 @@
 import { global } from './global';
-import { ph } from './ph';
+import { CONTACT_EMAIL } from './contact';
 import { footerSchema } from './schema';
 
 export const footer = footerSchema.parse({
@@ -19,7 +19,7 @@ export const footer = footerSchema.parse({
     { label: 'Security', href: '/security' },
   ],
   contactLabel: 'Contact',
-  contactValue: ph('contact_email'),
+  contactValue: CONTACT_EMAIL,
   languageNote: 'English for now. More languages later.',
   disclaimer: global.footerDisclaimer,
 });

@@ -2,12 +2,11 @@
 
 Run `pnpm check:launch` in `apps/site`. It fails while any `«PH:key»` remains, while `NEXT_PUBLIC_WHATSAPP_NUMBER` is unset, or while `scripts/links-pending.json` is non-empty (it is empty now).
 
-## Placeholders (19) and what the owner must supply
+## Placeholders (18) and what the owner must supply
 
 | Key                                                                      | Where it appears                                                                                  | Needed from the owner                                                      |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | `whatsapp_number`                                                        | env `NEXT_PUBLIC_WHATSAPP_NUMBER`; every Start on WhatsApp button falls back to `#join` until set | Scoutly WhatsApp number, digits, international format                      |
-| `contact_email`                                                          | footer                                                                                            | Public contact address                                                     |
 | `legal_entity`                                                           | privacy, terms                                                                                    | Company legal name and registered address                                  |
 | `grievance_officer`                                                      | privacy                                                                                           | DPDP grievance officer name and contact                                    |
 | `deletion_sla`                                                           | home (control, FAQ 10), privacy, data-deletion                                                    | How fast deletion requests are handled                                     |

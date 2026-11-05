@@ -123,10 +123,10 @@
   overflow: hidden;
 }
 .beat-card[data-tone='2'] {
-  background: var(--beat-2);
+  background: var(--beat-3);
 }
 .beat-card[data-tone='3'] {
-  background: var(--beat-3);
+  background: var(--beat-4);
 }
 .beat-headline {
   margin: 0;
@@ -443,10 +443,10 @@
   transition: opacity var(--dur-3) var(--ease);
 }
 .step-bg[data-tone='2'] {
-  background: var(--beat-2);
+  background: var(--beat-3);
 }
 .step-bg[data-tone='3'] {
-  background: var(--beat-3);
+  background: var(--beat-4);
 }
 .step-bg[data-state='active'] {
   opacity: 1;

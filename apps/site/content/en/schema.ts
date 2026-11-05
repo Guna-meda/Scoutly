@@ -2,7 +2,6 @@ import { z } from 'zod';
 
 export const placeholderKeys = [
   'whatsapp_number',
-  'contact_email',
   'legal_entity',
   'grievance_officer',
   'deletion_sla',
@@ -107,7 +106,6 @@ export type Flags = z.infer<typeof flagsSchema>;
 
 export const placeholdersSchema = z.object({
   whatsapp_number: nonEmpty,
-  contact_email: nonEmpty,
   legal_entity: nonEmpty,
   grievance_officer: nonEmpty,
   deletion_sla: nonEmpty,

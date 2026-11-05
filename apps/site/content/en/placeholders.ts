@@ -4,7 +4,6 @@ import { placeholdersSchema } from './schema';
 /** Every key from the placeholder table in docs/site/CONTENT.md. Fill values here. */
 export const placeholders = placeholdersSchema.parse({
   whatsapp_number: ph('whatsapp_number'),
-  contact_email: ph('contact_email'),
   legal_entity: ph('legal_entity'),
   grievance_officer: ph('grievance_officer'),
   deletion_sla: ph('deletion_sla'),
