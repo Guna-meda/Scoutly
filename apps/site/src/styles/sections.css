@@ -643,3 +643,22 @@ span[data-placeholder='true'] {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+/* Breathing room between the feature row, the stage and the next section. */
+.feature-row {
+  margin-bottom: 56px;
+}
+.stage-section {
+  margin-bottom: 48px;
+}
+@media (min-width: 1024px) {
+  .feature-row {
+    margin-bottom: 96px;
+  }
+  .stage-section {
+    margin-bottom: 64px;
+  }
+}
+.stage-stacked {
+  padding-top: 0;
+}

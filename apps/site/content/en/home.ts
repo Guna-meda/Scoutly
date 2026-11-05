@@ -94,11 +94,9 @@ export const control = {
     {
       title: 'Delete your data.',
       body: 'Ask, and we delete it.',
-      note: `Response time: ${ph('deletion_sla')}`,
     },
     { title: 'Nothing invented.', body: 'Every claim comes from facts you confirmed.' },
   ],
-  link: { label: 'Read the privacy page', href: '/privacy' },
 } as const;
 
 export const pricing = {

@@ -142,19 +142,9 @@ export function ControlSection() {
               {c.title}
             </H3>
             <Body as="p">{c.body}</Body>
-            {'note' in c ? (
-              <UI as="p" className="control-note">
-                <span data-placeholder="true">{c.note}</span>
-              </UI>
-            ) : null}
           </li>
         ))}
       </ul>
-      <p className="control-link">
-        <Link href={control.link.href} className="footer-link">
-          {control.link.label}
-        </Link>
-      </p>
     </Section>
   );
 }
