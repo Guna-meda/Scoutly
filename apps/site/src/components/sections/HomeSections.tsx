@@ -8,6 +8,7 @@ import {
   global,
   hero,
   join,
+  teams,
   pricing,
 } from '@content/en';
 import { Container } from '../layout/Container';
@@ -22,6 +23,7 @@ import { getWhatsAppLink } from '@/lib/whatsapp';
 import { FaqList } from './Faq';
 import { FindSteps } from './FindSteps';
 import { HeroDevice } from './HeroDevice';
+import { TeamsSelect } from './TeamsSelect';
 import { TypedEmail } from './TypedEmail';
 
 export function Hero() {
@@ -208,6 +210,15 @@ export function JoinSection({ waitlist }: { waitlist: boolean }) {
           <SubmitForm endpoint="/api/waitlist" text={join} />
         </div>
       ) : null}
+    </Section>
+  );
+}
+
+export function TeamsSection() {
+  return (
+    <Section id="teams" labelledBy="teams-h" className="ts-wrap">
+      <H2 id="teams-h">{teams.heading}</H2>
+      <TeamsSelect />
     </Section>
   );
 }

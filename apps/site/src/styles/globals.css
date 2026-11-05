@@ -3,6 +3,7 @@
 @import './components.css';
 @import './stage.css';
 @import './sections.css';
+@import './teams.css';
 
 @theme inline {
   --color-bg: var(--bg);

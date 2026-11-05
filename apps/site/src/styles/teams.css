@@ -1,0 +1,136 @@
+/* Teams section: direction-aware selection (original implementation). Tokens only. */
+.ts-wrap h2 {
+  margin: 0 0 24px;
+}
+.ts-text {
+  position: relative;
+  margin: 0;
+  max-width: 26em;
+  font-size: clamp(26px, 4.4vw, 44px);
+  line-height: 1.95;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+.ts-item {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+  margin: 0 -2px 0 2px;
+  padding: 0 6px 0 6px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.ts-item:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+.ts-logo {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.1em;
+  height: 1.1em;
+  border: var(--outline);
+  border-radius: 0.3em;
+  background: var(--surface);
+  overflow: hidden;
+}
+.ts-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--beat-4);
+  transform-origin: var(--ox) var(--oy);
+  transform: scale(var(--sx), var(--sy));
+  transition: transform var(--dur-3) var(--ease);
+}
+.ts-logo[data-tone='yellow'] .ts-fill {
+  background: var(--beat-1);
+}
+.ts-logo[data-tone='blue'] .ts-fill {
+  background: var(--beat-3);
+}
+.ts-logo[data-on='true'] .ts-fill {
+  transform: scale(1);
+}
+.ts-initial {
+  position: relative;
+  font-size: 0.6em;
+  font-weight: 700;
+  line-height: 1;
+}
+.ts-frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  border: 2px solid var(--ink);
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    transform var(--dur-4) var(--ease),
+    width var(--dur-4) var(--ease),
+    height var(--dur-4) var(--ease),
+    opacity var(--dur-2) linear;
+}
+.ts-frame[data-ready='true'] {
+  opacity: 1;
+}
+.ts-h {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--ink);
+  background: var(--surface);
+}
+.ts-h-tl {
+  left: -6px;
+  top: -6px;
+}
+.ts-h-tr {
+  right: -6px;
+  top: -6px;
+}
+.ts-h-bl {
+  left: -6px;
+  bottom: -6px;
+}
+.ts-h-br {
+  right: -6px;
+  bottom: -6px;
+}
+.ts-size {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 6px);
+  transform: translateX(-50%);
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  background: var(--ink);
+  color: var(--action-text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.ts-detail {
+  max-width: 34em;
+  margin: 40px 0 0;
+  font-size: 17px;
+  line-height: 1.5;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ts-fill,
+  .ts-frame {
+    transition: none;
+  }
+}

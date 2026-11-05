@@ -172,3 +172,12 @@ export const deletion = {
   consentRequired: 'Please tick the box to continue.',
   slaLine: `Response time: ${ph('deletion_sla')}`,
 } as const;
+
+export const teams = {
+  heading: 'Early-stage teams, found for you.',
+  before: 'Scoutly looks past job boards, at teams like ',
+  between: [', ', ' and '],
+  after: '. Early-stage, hiring or not, where your work fits.',
+  detailLabel: 'About this match',
+  tones: ['white', 'yellow', 'blue'],
+} as const;
