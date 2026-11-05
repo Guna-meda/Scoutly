@@ -79,3 +79,7 @@ All user-facing copy lives in `content/en/*.ts`, validated by zod schemas in `co
 ## Link checker choice
 
 linkinator: pure Node (no binary to install on Windows or CI), crawls a local `next start` server, and lets the script classify internal versus external failures.
+
+## Waitlist storage
+
+`POST /api/waitlist` and `POST /api/data-deletion` write through `WaitlistStore` (`src/lib/waitlist-store.ts`). The shipped implementation appends to `.data/*.jsonl` (git-ignored) and is for development only. Production needs a real store once hosting is chosen. The rate limiter (`src/lib/rate-limit.ts`) is in memory, so limits are per server instance.

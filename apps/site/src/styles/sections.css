@@ -198,7 +198,7 @@
 }
 @media (min-width: 1024px) {
   .replies-grid {
-    grid-template-columns: 1fr 360px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 48px;
   }
 }
@@ -619,7 +619,8 @@
   flex-wrap: wrap;
   gap: 12px;
 }
-[data-placeholder='true'] {
+span[data-placeholder='true'] {
+  color: var(--ink);
   background: var(--beat-2);
   padding: 0 4px;
   border-radius: 4px;

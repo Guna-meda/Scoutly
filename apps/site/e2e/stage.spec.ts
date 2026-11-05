@@ -6,7 +6,7 @@ test.describe('pinned stage (desktop)', () => {
   test('next, previous and dots change the screen and the announcement', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.goto('/#how-it-works');
-    const status = page.getByRole('status');
+    const status = page.locator('.stage-pin').getByRole('status');
     await expect(page.locator('.stage-pin')).toBeVisible();
     // Align the wrapper top with the header so the stage starts pinned on step 1.
     await page.evaluate(() => {

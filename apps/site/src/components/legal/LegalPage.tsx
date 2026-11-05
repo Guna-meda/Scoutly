@@ -47,7 +47,7 @@ export function LegalPage({ doc, children }: { doc: LegalDoc; children?: ReactNo
   );
 }
 
-/** Marks every «PH:key» in a sentence so preview builds show it visibly. */
+/** Marks every placeholder marker in a sentence so preview builds show it visibly. */
 export function Placeholdered({ text }: { text: string }) {
   const parts = text.split(/(«PH:[a-z_]+»)/);
   return (

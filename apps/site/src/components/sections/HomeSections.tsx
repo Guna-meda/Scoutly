@@ -82,17 +82,6 @@ export function RepliesSection() {
     <Section labelledBy="replies-h" className="replies">
       <div className="replies-grid">
         <H2 id="replies-h">{replies.heading}</H2>
-        <div className="reply-card" role="group" aria-label={replies.deviceLabel}>
-          <div className="reply-top">
-            <Pill tone="lime" kind="tag">
-              {replies.tag}
-            </Pill>
-          </div>
-          <div className="bubble bubble-out">
-            <Icon name="chat-bubble" size={18} /> {replies.notification}
-          </div>
-          <div className="bubble">{replies.reply}</div>
-        </div>
         <Body as="p" className="replies-note">
           {replies.note}
         </Body>

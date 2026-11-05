@@ -14,26 +14,47 @@ function token(name: string): string {
 }
 
 export default function Image() {
-  const bg = token('bg');
   const ink = token('ink');
-  const surface = token('surface');
-  const acid = token('beat-1');
+  const outer = {
+    display: 'flex',
+    width: size.width,
+    height: size.height,
+    background: token('bg'),
+    padding: 56,
+  } as const;
+  const card = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    flexGrow: 1,
+    background: token('surface'),
+    border: `4px solid ${ink}`,
+    borderRadius: 40,
+    padding: 56,
+    color: ink,
+  } as const;
+  const name = { fontSize: 44, fontWeight: 700 } as const;
+  const brand = { display: 'flex', alignItems: 'center', gap: 20 } as const;
+  const h1 = {
+    display: 'flex',
+    fontSize: 80,
+    fontWeight: 700,
+    lineHeight: 1,
+    letterSpacing: -2,
+  } as const;
+  const tag = {
+    display: 'flex',
+    alignSelf: 'flex-start',
+    background: token('beat-1'),
+    border: `3px solid ${ink}`,
+    borderRadius: 999,
+    padding: '8px 24px',
+    fontSize: 28,
+  } as const;
   return new ImageResponse(
-    <div style={{ width: '100%', height: '100%', display: 'flex', background: bg, padding: 56 }}>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          width: '100%',
-          background: surface,
-          border: `4px solid ${ink}`,
-          borderRadius: 40,
-          padding: 56,
-          color: ink,
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+    <div style={outer}>
+      <div style={card}>
+        <div style={brand}>
           <svg
             width="72"
             height="72"
@@ -47,32 +68,10 @@ export default function Image() {
             <circle cx="16" cy="16" r="11" strokeDasharray="52 17.1" />
             <path d="M14 18 L25 7 M17.5 7 H25 V14.5" />
           </svg>
-          <div style={{ fontSize: 44, fontWeight: 700 }}>{global.siteName}</div>
+          <div style={name}>{global.siteName}</div>
         </div>
-        <div
-          style={{
-            fontSize: 80,
-            fontWeight: 700,
-            lineHeight: 1,
-            letterSpacing: -2,
-            display: 'flex',
-          }}
-        >
-          {hero.h1}
-        </div>
-        <div
-          style={{
-            display: 'flex',
-            alignSelf: 'flex-start',
-            background: acid,
-            border: `3px solid ${ink}`,
-            borderRadius: 999,
-            padding: '8px 24px',
-            fontSize: 28,
-          }}
-        >
-          {hero.eyebrow}
-        </div>
+        <div style={h1}>{hero.h1}</div>
+        <div style={tag}>{hero.eyebrow}</div>
       </div>
     </div>,
     size,

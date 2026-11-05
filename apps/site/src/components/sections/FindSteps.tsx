@@ -19,7 +19,7 @@ export function FindSteps() {
           if (e.isIntersecting) setActive(Number((e.target as HTMLElement).dataset.i));
         }
       },
-      { rootMargin: '-45% 0px -45% 0px' },
+      { rootMargin: `-${Math.round(window.innerHeight * 0.45)}px 0px` },
     );
     refs.current.forEach((el) => el && io.observe(el));
     return () => io.disconnect();

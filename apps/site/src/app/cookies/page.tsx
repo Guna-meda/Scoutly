@@ -11,16 +11,16 @@ export const metadata: Metadata = pageMetadata({
   path: '/cookies',
 });
 
+const doc = {
+  title: cookies.title,
+  description: cookies.description,
+  intro: cookies.intro,
+  sections: [],
+};
+
 export default function Page() {
   return (
-    <LegalPage
-      doc={{
-        title: cookies.title,
-        description: cookies.description,
-        intro: cookies.intro,
-        sections: [],
-      }}
-    >
+    <LegalPage doc={doc}>
       <CookiePrefs />
       <Body as="p">
         <Placeholdered text={cookies.providerLine} />

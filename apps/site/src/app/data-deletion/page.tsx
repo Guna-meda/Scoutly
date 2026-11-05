@@ -11,16 +11,16 @@ export const metadata: Metadata = pageMetadata({
   path: '/data-deletion',
 });
 
+const doc = {
+  title: deletion.title,
+  description: dataDeletionPage.description,
+  intro: deletion.intro,
+  sections: [],
+};
+
 export default function Page() {
   return (
-    <LegalPage
-      doc={{
-        title: deletion.title,
-        description: dataDeletionPage.description,
-        intro: deletion.intro,
-        sections: [],
-      }}
-    >
+    <LegalPage doc={doc}>
       <Body as="p">
         <Placeholdered text={deletion.slaLine} />
       </Body>
