@@ -191,6 +191,7 @@ export const deletion = {
   detailsLabel: 'What should we delete? (optional)',
   consentLabel: 'I confirm this request is about my own data.',
   submit: 'Send deletion request',
+  sending: 'Sending',
   success: 'Request received. We will email you to confirm.',
   error: "That didn't work. Please try again.",
   rateLimited: 'Too many tries. Please wait a little and try again.',

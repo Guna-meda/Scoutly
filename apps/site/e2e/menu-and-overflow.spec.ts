@@ -27,7 +27,7 @@ test('phone menu works by keyboard: open, focus moves in, Esc closes and returns
 
 test('no horizontal scroll at 375 and 320', async ({ page }) => {
   for (const width of [375, 320]) {
-    for (const path of ['/', '/styleguide']) {
+    for (const path of ['/', '/styleguide', '/privacy', '/data-deletion']) {
       await page.setViewportSize({ width, height: 700 });
       await page.goto(path);
       const overflow = await page.evaluate(

@@ -4,6 +4,11 @@ import { expect, test } from '@playwright/test';
 const routes = [
   { name: 'home', path: '/' },
   { name: 'styleguide', path: '/styleguide' },
+  { name: 'privacy', path: '/privacy' },
+  { name: 'terms', path: '/terms' },
+  { name: 'cookies', path: '/cookies' },
+  { name: 'data-deletion', path: '/data-deletion' },
+  { name: 'security', path: '/security' },
   { name: '404', path: '/this-page-does-not-exist', status: 404 },
 ];
 const widths = [375, 1280] as const;

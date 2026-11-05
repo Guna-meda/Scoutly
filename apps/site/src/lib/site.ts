@@ -4,4 +4,11 @@ export function isStyleguideEnabled(env: string | undefined): boolean {
 }
 
 /** Public pages for sitemap.xml. /styleguide is never listed. */
-export const sitemapPaths = ['/'] as const;
+export const sitemapPaths = [
+  '/',
+  '/privacy',
+  '/terms',
+  '/cookies',
+  '/data-deletion',
+  '/security',
+] as const;

@@ -2,6 +2,7 @@
 @import './tokens.css';
 @import './components.css';
 @import './stage.css';
+@import './sections.css';
 
 @theme inline {
   --color-bg: var(--bg);

@@ -7,7 +7,8 @@ import { Header } from '@/components/shell/Header';
 import { HeaderBehavior } from '@/components/shell/HeaderBehavior';
 import { MobileMenu } from '@/components/shell/MobileMenu';
 import { SkipLink } from '@/components/shell/SkipLink';
-import { isProduction } from '@/lib/env';
+import { ConsentAnalytics } from '@/components/legal/ConsentAnalytics';
+import { pageMetadata } from '@/lib/metadata';
 import { getWhatsAppLink } from '@/lib/whatsapp';
 import '@/styles/globals.css';
 
@@ -22,11 +23,7 @@ const font = Bricolage_Grotesque({
 
 const jsFlag = { __html: "document.documentElement.classList.add('js')" };
 
-export const metadata: Metadata = {
-  title: global.siteName,
-  description: hero.lead,
-  robots: isProduction ? { index: true, follow: true } : { index: false, follow: false },
-};
+export const metadata: Metadata = pageMetadata({ title: null, description: hero.lead, path: '/' });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const wa = getWhatsAppLink();
@@ -45,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <ConsentAnalytics />
         <FloatingCta
           label={global.primaryButton}
           helpLabel={global.helpLabel}

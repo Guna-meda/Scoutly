@@ -1,12 +1,4 @@
 {
   "_comment": "Routes and anchors that are intentionally missing until a later phase adds them. check-links prints them as warnings. This file must be emptied in W06; check:launch fails while it is non-empty.",
-  "pending": [
-    "/privacy",
-    "/terms",
-    "/cookies",
-    "/data-deletion",
-    "/security",
-    "/#how-it-works",
-    "/#faq"
-  ]
+  "pending": []
 }
