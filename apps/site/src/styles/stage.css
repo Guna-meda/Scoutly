@@ -209,7 +209,7 @@
 /* ---------- Pinned wrapper ---------- */
 .stage-pin {
   display: none; /* chosen by the media queries below; stacked is the default */
-  --phone-dev-h: clamp(340px, 50svh, 440px);
+  --phone-dev-h: clamp(340px, calc(100svh - 360px), 520px);
   --step-len: 70svh;
   --dev-h: clamp(520px, calc(100svh - var(--header-h) - 120px), 680px);
   position: relative;
@@ -479,7 +479,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4px 0 10px;
+  gap: 6px;
+  padding: 0 8px 8px 14px;
+}
+/* Phone: slimmer dots so label, arrows and dots all fit the card without clipping. */
+.step-foot .stage-dot {
+  width: 28px;
+}
+.step-foot .stage-nav {
+  flex: none;
 }
 .step-headline {
   margin: 0 0 6px;

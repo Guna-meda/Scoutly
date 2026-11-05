@@ -783,6 +783,38 @@
   }
 }
 
+/* Phones with room (taller device): give the chat its breathing space back. */
+@media (max-width: 1023px) {
+  @container device (min-height: 460px) {
+    .screen {
+      gap: 8px;
+      padding: 12px;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+    .bubble {
+      padding: 7px 12px;
+    }
+    .match {
+      padding: 8px 12px;
+      gap: 10px;
+    }
+    .match-list {
+      gap: 8px;
+    }
+    .draft {
+      gap: 8px;
+    }
+    .draft-body {
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .progress-track {
+      margin-top: 8px;
+    }
+  }
+}
+
 /* Tight density for short devices (container query on the frame, no JS): same content, less air. */
 @container device (max-height: 419px) {
   .chat-header {

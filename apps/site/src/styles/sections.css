@@ -61,8 +61,8 @@
   gap: 12px;
 }
 .hero-device .device {
-  width: min(100%, 330px);
-  height: 420px;
+  width: min(100%, 360px);
+  height: 500px; /* tall enough for the roomy chat density (see components.css) */
 }
 .hero-device-caption {
   margin: 0;
@@ -206,57 +206,96 @@
 /* ---------- Find ---------- */
 .find-grid {
   display: grid;
-  gap: 32px;
+  gap: 28px;
 }
 .find-head h2,
 .find-note {
   margin: 0;
 }
 .find-note {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 .find-steps {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 12px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
+/* Mobile first: each step is its own card, numbered, with the copy given room to breathe. */
 .find-step {
   position: relative;
   display: flex;
-  gap: 16px;
-  padding-bottom: 28px;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  border: var(--outline);
+  border-radius: 20px;
+  background: var(--surface);
 }
 .find-num {
   flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border: var(--outline);
   border-radius: var(--r-full);
-  background: var(--surface);
+  background: var(--beat-1);
+  font-size: 16px;
   font-weight: 700;
 }
 .find-title {
   margin: 0;
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 700;
   letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 .find-body {
-  margin: 4px 0 0;
-  font-size: 17px;
-  line-height: 1.45;
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+@media (min-width: 640px) {
+  .find-step {
+    padding: 20px 22px;
+    gap: 18px;
+  }
+  .find-title {
+    font-size: 21px;
+  }
 }
 @media (min-width: 1024px) {
   .find-grid {
     grid-template-columns: 5fr 7fr;
     gap: 80px;
     align-items: start;
+  }
+  /* Desktop keeps the open timeline: no cards, numbers on a line. */
+  .find-steps {
+    gap: 0;
+  }
+  .find-step {
+    gap: 16px;
+    padding: 0 0 28px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  .find-num {
+    width: 40px;
+    height: 40px;
+    background: var(--surface);
+    font-size: inherit;
+  }
+  .find-title {
+    font-size: 22px;
+  }
+  .find-body {
+    font-size: 17px;
   }
   .find-head {
     position: sticky;
