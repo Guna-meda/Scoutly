@@ -208,10 +208,29 @@
 
 /* ---------- Pinned wrapper ---------- */
 .stage-pin {
+  display: none; /* chosen by the media queries below; stacked is the default */
+  --phone-dev-h: clamp(340px, 50svh, 440px);
   --step-len: 70svh;
   --dev-h: clamp(520px, calc(100svh - var(--header-h) - 120px), 680px);
   position: relative;
   height: calc(100svh + 2 * var(--step-len));
+}
+/* CSS-only layout choice: pinned needs JS (.js), allowed motion and enough height. */
+@media (prefers-reduced-motion: no-preference) and (max-width: 1023.98px) and (min-height: 600px) {
+  .js .stage-pin {
+    display: block;
+  }
+  .js .stage-stacked {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) and (min-height: 700px) {
+  .js .stage-pin {
+    display: block;
+  }
+  .js .stage-stacked {
+    display: none;
+  }
 }
 .stage-zone {
   position: absolute;
@@ -241,13 +260,18 @@
 .stage-sticky > .container {
   width: 100%;
 }
-.stage-pin[data-mode='phone'] .stage-sticky {
-  align-items: flex-start;
-}
 
-/* Desktop grid */
+/* Desktop grid (width >= 1024) */
+@media (min-width: 1024px) {
+  .stage-sticky .stage-grid {
+    display: grid;
+  }
+  .stage-phone {
+    display: none !important;
+  }
+}
 .stage-grid {
-  display: grid;
+  display: none;
   grid-template-columns: 1fr 330px 1fr;
   gap: 56px;
   align-items: start;
@@ -389,34 +413,53 @@
   box-shadow: 0 0 0 3px var(--action-text);
 }
 
-/* ---------- Phone ---------- */
+/* ---------- Phone (width < 1024) ---------- */
 .stage-phone {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 .stage-phone .device {
-  height: 440px;
+  height: var(--phone-dev-h);
 }
 .stage-phone .stage-controls {
   margin-top: 0;
-}
-.step-cards {
-  position: relative;
-  height: 168px;
+  gap: 0;
 }
 .step-card {
-  position: absolute;
-  inset: 0;
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  padding: 12px 14px;
+  height: clamp(176px, calc(100svh - var(--header-h) - var(--phone-dev-h) - 16px), 232px);
   border: var(--outline);
   border-radius: var(--r-l);
-  background: var(--beat-1);
   overflow: hidden;
+}
+.step-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--beat-1);
+  opacity: 0;
+  transition: opacity var(--dur-3) var(--ease);
+}
+.step-bg[data-tone='2'] {
+  background: var(--beat-2);
+}
+.step-bg[data-tone='3'] {
+  background: var(--beat-3);
+}
+.step-bg[data-state='active'] {
+  opacity: 1;
+}
+.step-texts {
+  position: relative;
+  display: grid;
+  flex: 1 1 0;
+  min-height: 0;
+  padding: 12px 14px 0;
+}
+.step-text {
+  grid-area: 1 / 1;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -425,29 +468,35 @@
     transform var(--dur-3) var(--ease),
     visibility 0s linear var(--dur-3);
 }
-.step-card[data-tone='2'] {
-  background: var(--beat-2);
-}
-.step-card[data-tone='3'] {
-  background: var(--beat-3);
-}
-.step-card[data-state='active'] {
+.step-text[data-state='active'] {
   opacity: 1;
   visibility: visible;
   transform: none;
   transition-delay: 0s;
 }
+.step-foot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px 0 10px;
+}
 .step-headline {
-  margin: 0;
-  font-size: 21px;
+  margin: 0 0 6px;
+  font-size: clamp(22px, 6.4vw, 26px);
   line-height: 1.05;
   letter-spacing: -0.03em;
   font-weight: 700;
 }
 .step-caption {
   margin: 0;
-  font-size: 14.5px;
+  font-size: 14px;
   line-height: 1.3;
+}
+@media (min-height: 760px) {
+  .step-caption {
+    font-size: 15px;
+  }
 }
 
 /* ---------- Screen swap (animation 01) ---------- */

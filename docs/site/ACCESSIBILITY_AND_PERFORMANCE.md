@@ -42,7 +42,7 @@ Content
 | CLS | under 0.02, aim for 0 |
 | INP | under 200 ms |
 | Stage JS | under 60 KB gzipped |
-| Total JS on home | under 150 KB gzipped, hydration islands only |
+| Total JS on home | under 190 KB gzipped (framework is about 115 KB of that; app code and islands the rest). Judge success by measured LCP and INP, not by this number alone |
 | Fonts | one variable font, preloaded, `font-display: swap`, size-adjusted fallback, latin plus latin-ext only |
 | Images | none required; OG images pre-rendered; any other image AVIF or WebP with width and height set |
 

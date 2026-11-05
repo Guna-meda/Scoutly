@@ -20,16 +20,36 @@ type Props = {
  */
 export function FloatingCta({ label, helpLabel, href, isPlaceholder }: Props) {
   const [away, setAway] = useState(false);
+  const [helpAway, setHelpAway] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    const target = document.getElementById('join');
-    if (!target) return;
-    const observer = new IntersectionObserver(([entry]) => setAway(Boolean(entry?.isIntersecting)));
-    observer.observe(target);
+    const join = document.getElementById('join');
+    // On phones the pinned stage needs the room; the header already carries the call to action.
+    const stage = document.querySelector('.stage-pin');
+    const phone = window.matchMedia('(max-width: 1023.98px)');
+    let joinOn = false;
+    let stageOn = false;
+    const update = () => {
+      const onStage = stageOn && phone.matches;
+      setAway(joinOn || onStage);
+      setHelpAway(onStage);
+    };
+    const observer = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.target === join) joinOn = e.isIntersecting;
+        else stageOn = e.isIntersecting;
+      }
+      update();
+    });
+    if (join) observer.observe(join);
+    if (stage) observer.observe(stage);
+    phone.addEventListener('change', update);
     return () => {
       observer.disconnect();
+      phone.removeEventListener('change', update);
       setAway(false);
+      setHelpAway(false);
     };
   }, [pathname]);
 
@@ -50,7 +70,15 @@ export function FloatingCta({ label, helpLabel, href, isPlaceholder }: Props) {
           {label}
         </Button>
       </div>
-      <Link href="/#faq" className="fab-help on-ink" aria-label={helpLabel} data-inert-when-menu>
+      <Link
+        href="/#faq"
+        className="fab-help on-ink"
+        aria-label={helpLabel}
+        data-inert-when-menu
+        data-away={helpAway ? 'true' : 'false'}
+        tabIndex={helpAway ? -1 : undefined}
+        aria-hidden={helpAway ? true : undefined}
+      >
         <Icon name="chat-bubble" />
       </Link>
     </>

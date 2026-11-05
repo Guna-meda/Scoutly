@@ -4,15 +4,15 @@ import { beatForOffset, clampBeat, decideMode, fill } from './stage-mode';
 describe('decideMode', () => {
   it('is stacked under reduced motion at any size', () => {
     expect(decideMode({ reduceMotion: true, width: 1440, height: 900 })).toBe('stacked');
-    expect(decideMode({ reduceMotion: true, width: 375, height: 800 })).toBe('stacked');
+    expect(decideMode({ reduceMotion: true, width: 375, height: 599 })).toBe('stacked');
   });
   it('pins on desktop only when tall enough', () => {
     expect(decideMode({ reduceMotion: false, width: 1280, height: 800 })).toBe('desktop');
     expect(decideMode({ reduceMotion: false, width: 1280, height: 699 })).toBe('stacked');
   });
   it('pins on phone only when the device and card fit', () => {
-    expect(decideMode({ reduceMotion: false, width: 390, height: 840 })).toBe('phone');
-    expect(decideMode({ reduceMotion: false, width: 390, height: 800 })).toBe('stacked');
+    expect(decideMode({ reduceMotion: false, width: 390, height: 600 })).toBe('phone');
+    expect(decideMode({ reduceMotion: false, width: 390, height: 599 })).toBe('stacked');
   });
 });
 

@@ -29,7 +29,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const wa = getWhatsAppLink();
   return (
-    <html lang="en" className={font.variable}>
+    <html lang="en" className={font.variable} suppressHydrationWarning>
+      <head>
+        {/* Before first paint: lets CSS enable the pinned stage. Without JS the stacked layout shows. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+        />
+      </head>
       <body>
         <SkipLink />
         <Header />

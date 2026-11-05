@@ -362,6 +362,9 @@
 .fab-help:active {
   transform: scale(0.97);
 }
+.fab-help[data-away='true'] {
+  visibility: hidden;
+}
 .fab-pill {
   left: var(--pill-gap);
   right: calc(var(--pill-gap) * 2 + var(--pill-h));
@@ -416,6 +419,7 @@
 
 /* ---------- Device frame and chat (W02) ---------- */
 .device {
+  container: device / size;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -703,5 +707,61 @@
   }
   .progress-track {
     margin-top: 5px;
+  }
+}
+
+/* Tight density for short devices (container query on the frame, no JS): same content, less air. */
+@container device (max-height: 419px) {
+  .chat-header {
+    height: 40px;
+  }
+  .chat-avatar {
+    width: 28px;
+    height: 28px;
+  }
+  .screen {
+    gap: 2px;
+    padding: 4px 6px;
+    font-size: 12px;
+    line-height: 1.15;
+  }
+  .bubble {
+    padding: 2px 8px;
+  }
+  .match {
+    padding: 2px 8px;
+    gap: 0;
+  }
+  .match-name,
+  .match-line {
+    font-size: 12px;
+  }
+  .match-source {
+    display: none;
+  }
+  .match-list {
+    gap: 2px;
+  }
+  .draft {
+    gap: 2px;
+  }
+  .draft-body {
+    gap: 2px;
+    margin-top: 0;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .qr {
+    height: 32px;
+    font-size: 13px;
+  }
+  .sent-note {
+    font-size: 12px;
+  }
+  .file-icon {
+    height: 32px;
+  }
+  .progress-track {
+    margin-top: 3px;
   }
 }

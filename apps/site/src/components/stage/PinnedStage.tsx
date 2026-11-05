@@ -6,7 +6,7 @@ import { ScreenStack } from '../chat/ScreenStack';
 import { Container } from '../layout/Container';
 import { Icon } from '../ui/Icon';
 import { Pill } from '../ui/Pill';
-import { clampBeat, fill, type Beat, type StageMode } from '@/lib/stage-mode';
+import { clampBeat, fill, type Beat } from '@/lib/stage-mode';
 import { beatIcons, beatTones } from './StageStacked';
 
 const beats = [0, 1, 2] as const;
@@ -23,7 +23,7 @@ function headerHeight(): number {
  * Pinned stage. `beat` is the single source of truth: scroll (IntersectionObserver on three zones),
  * buttons, dots and card labels all set it. No wheel/touch listeners, no preventDefault.
  */
-export function PinnedStage({ mode }: { mode: Exclude<StageMode, 'stacked'> }) {
+export function PinnedStage() {
   const [beat, setBeat] = useState<Beat>(0);
   const wrapRef = useRef<HTMLDivElement>(null);
   const zoneRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -113,7 +113,7 @@ export function PinnedStage({ mode }: { mode: Exclude<StageMode, 'stacked'> }) {
   );
 
   return (
-    <div ref={wrapRef} className="stage-pin" data-mode={mode} data-beat={beat}>
+    <div ref={wrapRef} className="stage-pin" data-beat={beat}>
       {beats.map((i) => (
         <div
           key={i}
@@ -127,7 +127,7 @@ export function PinnedStage({ mode }: { mode: Exclude<StageMode, 'stacked'> }) {
       ))}
       <div className="stage-sticky">
         <Container>
-          {mode === 'desktop' ? (
+          <>
             <div className="stage-grid">
               <div className="beat-cards">
                 {beats.map((i) => (
@@ -168,28 +168,39 @@ export function PinnedStage({ mode }: { mode: Exclude<StageMode, 'stacked'> }) {
                 <Rewards beat={beat} />
               </div>
             </div>
-          ) : (
             <div className="stage-phone">
               <ScreenStack beat={beat} />
-              <div className="step-cards">
+              <div className="step-card">
                 {beats.map((i) => (
                   <div
                     key={i}
-                    className="step-card"
+                    className="step-bg"
                     data-tone={i + 1}
                     data-state={i === beat ? 'active' : 'off'}
-                    aria-hidden={i !== beat}
-                    inert={i !== beat}
-                  >
-                    <Pill tone={beatTones[i] ?? 'white'}>{b[i]?.label}</Pill>
-                    <h3 className="step-headline">{b[i]?.headline}</h3>
-                    <p className="step-caption">{b[i]?.caption}</p>
-                  </div>
+                    aria-hidden="true"
+                  />
                 ))}
+                <div className="step-texts">
+                  {beats.map((i) => (
+                    <div
+                      key={i}
+                      className="step-text"
+                      data-state={i === beat ? 'active' : 'off'}
+                      aria-hidden={i !== beat}
+                      inert={i !== beat}
+                    >
+                      <h3 className="step-headline">{b[i]?.headline}</h3>
+                      <p className="step-caption">{b[i]?.caption}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="step-foot">
+                  <Pill tone={beatTones[beat] ?? 'white'}>{b[beat]?.label}</Pill>
+                  {controls}
+                </div>
               </div>
-              {controls}
             </div>
-          )}
+          </>
         </Container>
       </div>
       <p role="status" aria-live="polite" className="sr-only">

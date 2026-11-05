@@ -1,10 +1,10 @@
 import { stage } from '@content/en';
-import { StageEnhancer } from './StageEnhancer';
+import { PinnedStage } from './PinnedStage';
 import { StageStacked } from './StageStacked';
 
 /**
- * The pinned "how it works" stage. Server-rendered as the stacked layout (also the no-JS and
- * reduced-motion layout); StageEnhancer upgrades it to the pinned layout on the client when allowed.
+ * The pinned "how it works" stage. Both layouts are server-rendered; CSS picks one (see stage.css), so there is no layout shift.
+ * Stacked is the default, the no-JS and the reduced-motion layout.
  */
 export function StageSection() {
   return (
@@ -12,9 +12,8 @@ export function StageSection() {
       <h2 id="stage-heading" className="sr-only">
         {stage.ui.heading}
       </h2>
-      <StageEnhancer>
-        <StageStacked />
-      </StageEnhancer>
+      <StageStacked />
+      <PinnedStage />
     </section>
   );
 }
