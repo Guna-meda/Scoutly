@@ -59,8 +59,8 @@ export function TeamsSelect() {
     const f = fills[i] ?? { edge: 'left' as Edge, on: false };
     const horizontal = f.edge === 'left' || f.edge === 'right';
     const logoStyle = {
-      '--ox': f.edge === 'left' ? '0%' : f.edge === 'right' ? '100%' : '50%',
-      '--oy': f.edge === 'top' ? '0%' : f.edge === 'bottom' ? '100%' : '50%',
+      '--ox': f.edge === 'left' ? 'left' : f.edge === 'right' ? 'right' : 'center',
+      '--oy': f.edge === 'top' ? 'top' : f.edge === 'bottom' ? 'bottom' : 'center',
       '--sx': horizontal ? 0 : 1,
       '--sy': horizontal ? 1 : 0,
     } as CSSProperties;
