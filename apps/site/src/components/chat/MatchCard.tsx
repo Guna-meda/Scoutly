@@ -13,32 +13,21 @@ type Props = {
 };
 
 /** One match: name, meta, reason, source and a fit label that carries words. */
-export function MatchCard({
-  index,
-  name,
-  meta,
-  why,
-  source,
-  fit,
-  tone,
-  whyLabel,
-  sourceLabel,
-}: Props) {
+export function MatchCard({ index, name, why, fit, tone, whyLabel }: Props) {
   return (
     <li className="match">
-      <div className="match-top">
-        <span className="match-name">
-          {index}. {name}
-        </span>
-        <Pill tone={tone}>{fit}</Pill>
-      </div>
-      <span className="match-line">{meta}</span>
-      <span className="match-line">
-        {whyLabel} {why}{' '}
-        <span className="match-source">
-          {sourceLabel} {source}
-        </span>
+      <span className="match-num" aria-hidden="true">
+        {index}
       </span>
+      <div className="match-main">
+        <div className="match-top">
+          <span className="match-name">{name}</span>
+          <Pill tone={tone}>{fit}</Pill>
+        </div>
+        <span className="match-line">
+          {whyLabel} {why}
+        </span>
+      </div>
     </li>
   );
 }

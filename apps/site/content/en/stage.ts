@@ -20,8 +20,7 @@ export const stage = stageSchema.parse({
     {
       label: 'Specific',
       headline: 'Startups that fit, with a real reason.',
-      caption:
-        "Each match shows a source, whether they're hiring, and a fit label with a one-line reason from your own work.",
+      caption: 'Each match comes with a fit label and a one-line reason from your own work.',
     },
     {
       label: 'Yours',
