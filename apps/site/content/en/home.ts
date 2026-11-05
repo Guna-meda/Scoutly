@@ -98,7 +98,7 @@ export const control = {
     },
     { title: 'Nothing invented.', body: 'Every claim comes from facts you confirmed.' },
   ],
-  
+  link: { label: 'Read the privacy page', href: '/privacy' },
 } as const;
 
 export const pricing = {
