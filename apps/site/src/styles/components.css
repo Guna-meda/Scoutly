@@ -888,3 +888,26 @@
     gap: 0;
   }
 }
+
+/* Matches as one list card: rows split by a line, round initial avatars. Fewer boxes, calmer. */
+.match-list {
+  gap: 0;
+  border: var(--outline);
+  border-radius: var(--r-m);
+  background: var(--surface);
+  overflow: hidden;
+}
+.match {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+.match + .match {
+  border-top: 2px solid var(--line);
+}
+.match-av {
+  border-radius: var(--r-full);
+}
+.match-name {
+  font-size: 15.5px;
+}

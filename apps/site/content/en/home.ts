@@ -128,36 +128,12 @@ export const faq = {
       a: 'Your own Gmail, so replies come to you.',
     },
     {
-      q: 'How many follow-ups are sent?',
-      a: 'Up to two on the same thread: around day 4 to 5, then around day 12 to 14. Then it stops.',
-    },
-    {
-      q: 'Who does it write to?',
-      a: 'A founder or hiring manager, found from public sources. Scoutly verifies the address first.',
-    },
-    {
-      q: 'Can it make things up about me?',
-      a: 'It must not. Every claim in an email comes from facts you confirmed. If you spot an error, EDIT it or DISCARD.',
-    },
-    {
-      q: 'Which companies does it look at?',
-      a: 'Early-stage startups, seed to Series C, India and remote first. Including companies with no open role.',
-    },
-    {
-      q: 'How long are the emails?',
-      a: 'About 60 to 90 words, with one clear ask.',
-    },
-    {
       q: 'Can I delete my data?',
       a: `Yes. Use the data deletion request page. (Response time: ${ph('deletion_sla')})`,
     },
     {
       q: 'Will this get me an interview or a job?',
       a: "We can't promise that. Scoutly helps you write good emails and reach the right people. Replies are up to them.",
-    },
-    {
-      q: 'Is Scoutly part of WhatsApp or Meta?',
-      a: 'No. Scoutly is not affiliated with WhatsApp or Meta. You chat with it on WhatsApp.',
     },
   ],
   toggleLabel: 'Show or hide the answer',

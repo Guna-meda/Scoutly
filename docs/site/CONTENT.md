@@ -121,18 +121,14 @@ Email format rules (the sample obeys them; so must any new sample): first-name g
 
 ## 9. FAQ
 
+Trimmed to six on 2026-11-05 at the owner's request. Do not add the dropped ones back (follow-up count, who it writes to, made-up claims, company types, email length, WhatsApp affiliation) without asking. The footer still carries the "not affiliated" line.
+
 1. **Will Scoutly send emails without asking me?** No. You see the exact draft first. Nothing is sent until you reply SEND. You can also EDIT or DISCARD.
 2. **Do you scrape LinkedIn?** No. Scoutly uses public sources only and does not scrape LinkedIn or private data.
 3. **What if a founder says stop?** Follow-ups stop on any reply, a bounce or an opt-out. Scoutly does not keep nudging.
 4. **Which email address does it send from?** Your own Gmail, so replies come to you.
-5. **How many follow-ups are sent?** Up to two on the same thread: around day 4 to 5, then around day 12 to 14. Then it stops.
-6. **Who does it write to?** A founder or hiring manager, found from public sources. Scoutly verifies the address first.
-7. **Can it make things up about me?** It must not. Every claim in an email comes from facts you confirmed. If you spot an error, EDIT it or DISCARD.
-8. **Which companies does it look at?** Early-stage startups, seed to Series C, India and remote first. Including companies with no open role.
-9. **How long are the emails?** About 60 to 90 words, with one clear ask.
-10. **Can I delete my data?** Yes. Use the data deletion request page. *(response time: «PH:deletion_sla»)*
-11. **Will this get me an interview or a job?** We can't promise that. Scoutly helps you write good emails and reach the right people. Replies are up to them.
-12. **Is Scoutly part of WhatsApp or Meta?** No. Scoutly is not affiliated with WhatsApp or Meta. You chat with it on WhatsApp.
+5. **Can I delete my data?** Yes. Use the data deletion request page. *(response time: «PH:deletion_sla»)*
+6. **Will this get me an interview or a job?** We can't promise that. Scoutly helps you write good emails and reach the right people. Replies are up to them.
 
 ## 10. Closing call and waitlist
 
