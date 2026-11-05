@@ -308,15 +308,6 @@
 }
 
 /* ---------- Footer ---------- */
-.site-footer {
-  background: var(--surface);
-  border-top: var(--outline);
-  padding-block: 40px;
-}
-.footer-links {
-  display: flex;
-  flex-direction: column;
-}
 .footer-link {
   display: inline-flex;
   align-items: center;
@@ -326,11 +317,93 @@
   text-underline-offset: 4px;
   text-decoration-thickness: 2px;
 }
+.site-footer {
+  margin-top: var(--section-pad);
+  padding-block: 56px 40px;
+  background: var(--ink);
+  color: var(--action-text);
+}
+.site-footer .footer-link {
+  color: var(--action-text);
+  text-decoration: none;
+  font-size: 17px;
+}
+.site-footer .footer-link:hover {
+  text-decoration: underline;
+}
+.site-footer a:focus-visible {
+  outline: 3px solid var(--action-text);
+  outline-offset: 3px;
+}
+.footer-top {
+  display: grid;
+  gap: 40px;
+}
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: var(--tap);
+  color: var(--action-text);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+.footer-tagline {
+  max-width: 18em;
+  margin: 8px 0 0;
+  font-size: 17px;
+  line-height: 1.4;
+}
+.footer-heading {
+  margin: 0 0 8px;
+  font-size: var(--text-label);
+  line-height: var(--lh-label);
+  letter-spacing: var(--tracking-label);
+  font-weight: var(--weight-label);
+  text-transform: uppercase;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+}
+.footer-contact,
+.footer-note {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.5;
+}
+.footer-contact {
+  min-height: var(--tap);
+  display: flex;
+  align-items: center;
+}
+.footer-note {
+  margin-top: 8px;
+}
+.footer-disclaimer {
+  margin: 48px 0 0;
+  padding-top: 24px;
+  border-top: 2px solid var(--action-text);
+  font-size: 15px;
+  font-weight: 600;
+}
 @media (min-width: 768px) {
-  .footer-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 24px;
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .footer-top {
+    grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+    gap: 48px;
+  }
+}
+/* The floating pill must never cover footer content on phones. */
+@media (max-width: 1023px) {
+  .site-footer {
+    padding-bottom: calc(40px + var(--pill-h) + var(--pill-gap) * 2);
   }
 }
 

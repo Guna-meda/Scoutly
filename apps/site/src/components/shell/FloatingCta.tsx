@@ -30,20 +30,24 @@ export function FloatingCta({ label, helpLabel, href, isPlaceholder }: Props) {
     const phone = window.matchMedia('(max-width: 1023.98px)');
     let joinOn = false;
     let stageOn = false;
+    let footerOn = false;
+    const footer = document.querySelector('.site-footer');
     const update = () => {
       const onStage = stageOn && phone.matches;
-      setAway(joinOn || onStage);
-      setHelpAway(onStage);
+      setAway(joinOn || onStage || footerOn);
+      setHelpAway(onStage || footerOn);
     };
     const observer = new IntersectionObserver((entries) => {
       for (const e of entries) {
         if (e.target === join) joinOn = e.isIntersecting;
+        else if (e.target === footer) footerOn = e.isIntersecting;
         else stageOn = e.isIntersecting;
       }
       update();
     });
     if (join) observer.observe(join);
     if (stage) observer.observe(stage);
+    if (footer) observer.observe(footer);
     phone.addEventListener('change', update);
     return () => {
       observer.disconnect();

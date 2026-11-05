@@ -50,6 +50,9 @@ export const navSchema = z.object({
 export type NavContent = z.infer<typeof navSchema>;
 
 export const footerSchema = z.object({
+  tagline: nonEmpty,
+  exploreLabel: nonEmpty,
+  exploreLinks: z.array(link).min(1),
   legalLabel: nonEmpty,
   legalLinks: z.array(link).min(1),
   contactLabel: nonEmpty,
