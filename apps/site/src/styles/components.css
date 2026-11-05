@@ -434,6 +434,7 @@
 }
 /* Fixed sizes for the styleguide */
 .device-desktop {
+  max-width: 100%;
   width: 330px;
   height: 680px;
 }

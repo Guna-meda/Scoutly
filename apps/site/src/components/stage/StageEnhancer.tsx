@@ -8,7 +8,7 @@ const queries = [
   '(prefers-reduced-motion: reduce)',
   '(min-width: 1024px)',
   '(min-height: 700px)',
-  '(min-height: 760px)',
+  '(min-height: 820px)',
 ] as const;
 
 /** Renders the server's stacked layout until the client knows motion is allowed and the viewport fits. */
@@ -22,7 +22,7 @@ export function StageEnhancer({ children }: { children: ReactNode }) {
         decideMode({
           reduceMotion: mqs[0]?.matches ?? true,
           width: mqs[1]?.matches ? 1024 : 0,
-          height: mqs[3]?.matches ? 760 : mqs[2]?.matches ? 700 : 0,
+          height: mqs[3]?.matches ? 820 : mqs[2]?.matches ? 700 : 0,
         }),
       );
     update();

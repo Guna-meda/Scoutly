@@ -11,8 +11,8 @@ describe('decideMode', () => {
     expect(decideMode({ reduceMotion: false, width: 1280, height: 699 })).toBe('stacked');
   });
   it('pins on phone only when the device and card fit', () => {
-    expect(decideMode({ reduceMotion: false, width: 390, height: 800 })).toBe('phone');
-    expect(decideMode({ reduceMotion: false, width: 390, height: 640 })).toBe('stacked');
+    expect(decideMode({ reduceMotion: false, width: 390, height: 840 })).toBe('phone');
+    expect(decideMode({ reduceMotion: false, width: 390, height: 800 })).toBe('stacked');
   });
 });
 

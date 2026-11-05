@@ -243,7 +243,6 @@
 }
 .stage-pin[data-mode='phone'] .stage-sticky {
   align-items: flex-start;
-  padding-top: 8px;
 }
 
 /* Desktop grid */
@@ -394,7 +393,7 @@
 .stage-phone {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 .stage-phone .device {
   height: 440px;

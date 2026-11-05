@@ -3,9 +3,9 @@ export type StageMode = 'stacked' | 'desktop' | 'phone';
 
 export type StageEnv = { reduceMotion: boolean; width: number; height: number };
 
-/** Minimum heights at which the pinned layout fits without cropping the device. */
+/** Minimum heights at which the pinned layout fits without cropping the device (phone includes the 84 px floating bar). */
 export const MIN_HEIGHT_DESKTOP = 700;
-export const MIN_HEIGHT_PHONE = 760;
+export const MIN_HEIGHT_PHONE = 820;
 export const DESKTOP_WIDTH = 1024;
 
 /** Stacked is the server, no-JS and reduced-motion layout; pinned only when motion is allowed and it fits. */
