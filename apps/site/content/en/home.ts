@@ -25,21 +25,30 @@ export const replies = {
 } as const;
 
 export const find = {
-  heading: 'How Scoutly finds the right person',
+  heading: 'How Scoutly gets you to the right person',
   steps: [
-    { title: 'Your profile.', body: "What you've built and what you want next, confirmed by you." },
     {
-      title: 'Public signals.',
-      body: 'Hiring pages, funding news, founder posts and roadmaps. Public sources only.',
+      title: "Understand what you're looking for",
+      body: 'Your skills, experience, interests, and the kind of opportunity you want.',
     },
-    { title: 'The person.', body: 'A founder or hiring manager, not a generic inbox.' },
     {
-      title: 'A verified email.',
-      body: 'Scoutly checks the address before it writes anything.',
+      title: 'Find relevant startups',
+      body: 'Discover companies that match your profile, including startups that may not have advertised open roles.',
     },
-    { title: 'Your draft.', body: 'Short, specific, in plain words. You decide.' },
+    {
+      title: 'Find a reason to reach out',
+      body: 'Look for hiring activity, recent funding, team growth, product launches, and other relevant public updates.',
+    },
+    {
+      title: 'Identify the right person',
+      body: 'Find a relevant founder, hiring manager, or team lead instead of sending your message to a generic inbox.',
+    },
+    {
+      title: 'Get a personalized introduction',
+      body: 'Get a relevant contact address and a tailored outreach draft. Review it and decide whether to send.',
+    },
   ],
-  note: 'Companies with no open role are included too. Each match says whether the company is hiring or a cold intro.',
+  note: 'Not just a list of startups. A relevant company, the person to contact, and a reason to reach out.',
   stepLabel: 'Step {n}',
 } as const;
 
