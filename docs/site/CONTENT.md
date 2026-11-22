@@ -18,7 +18,7 @@ Status: **draft copy for owner review.** Every line follows the voice rules belo
 - Site name: Scoutly
 - Primary button: **Start on WhatsApp** (links to `wa.me/«PH:whatsapp_number»?text=Hi`)
 - Secondary: **Join the waitlist**
-- Nav: How it works · Privacy · FAQ
+- Nav (header and phone menu): How it works · FAQ · Privacy · Terms · Contact (mailto the contact email)
 - Footer disclaimer: **Scoutly is not affiliated with WhatsApp or Meta.**
 - Footer draft-law note (legal pages only): *Draft, pending lawyer review.*
 
@@ -77,6 +77,10 @@ Quick replies: SEND · EDIT · DISCARD. After SEND: "Sent from your own Gmail. I
 
 Email format rules (the sample obeys them; so must any new sample): first-name greeting, three short paragraphs of at most two lines, one blank line between them, about 60 to 90 words, one easy ask, no placeholders, only facts the user confirmed.
 
+## 3b. How Scoutly uses your Gmail (home, after the stage; anchor `#gmail`)
+
+Plain words, for users and for Google OAuth verification. Two permissions: send the emails you approved from your own account, and read-only access used only for the threads Scoutly itself sent (to see replies, bounces and opt-outs and stop follow-ups). No other mail is read. No advertising use, no selling. Disconnect any time. Links to `/privacy#google-user-data`. Copy lives in `content/en/home.ts` (`gmail`).
+
 ## 4. Replies come to you (optional beat 4)
 
 - Notification: "Priya replied to your note." (sample)
@@ -109,7 +113,7 @@ Email format rules (the sample obeys them; so must any new sample): first-name g
 - Items:
   1. **You approve every email.** Nothing goes out unseen. Reply SEND, EDIT or DISCARD.
   2. **It sends from your Gmail.** Replies come straight to you.
-  3. **Public sources only.** No scraping of private data and no LinkedIn scraping.
+  3. **Public information only.** Scoutly does not read private data.
   4. **It stops when it should.** Follow-ups end on a reply, a bounce or an opt-out. At most two follow-ups.
   5. **Delete your data.** Ask, and we delete it. *(response time: «PH:deletion_sla»)*
   6. **Nothing invented.** Every claim comes from facts you confirmed.
@@ -121,14 +125,13 @@ Email format rules (the sample obeys them; so must any new sample): first-name g
 
 ## 9. FAQ
 
-Trimmed to six on 2026-11-05 at the owner's request. Do not add the dropped ones back (follow-up count, who it writes to, made-up claims, company types, email length, WhatsApp affiliation) without asking. The footer still carries the "not affiliated" line.
+Trimmed to six on 2026-11-05 and to five on 2026-11-22 (the LinkedIn question was removed: its answer was false) at the owner's request. Do not add the dropped ones back (follow-up count, who it writes to, made-up claims, company types, email length, WhatsApp affiliation) without asking. The footer still carries the "not affiliated" line.
 
 1. **Will Scoutly send emails without asking me?** No. You see the exact draft first. Nothing is sent until you reply SEND. You can also EDIT or DISCARD.
-2. **Do you scrape LinkedIn?** No. Scoutly uses public sources only and does not scrape LinkedIn or private data.
-3. **What if a founder says stop?** Follow-ups stop on any reply, a bounce or an opt-out. Scoutly does not keep nudging.
-4. **Which email address does it send from?** Your own Gmail, so replies come to you.
-5. **Can I delete my data?** Yes. Use the data deletion request page. *(response time: «PH:deletion_sla»)*
-6. **Will this get me an interview or a job?** We can't promise that. Scoutly helps you write good emails and reach the right people. Replies are up to them.
+2. **What if a founder says stop?** Follow-ups stop on any reply, a bounce or an opt-out. Scoutly does not keep nudging.
+3. **Which email address does it send from?** Your own Gmail, so replies come to you.
+4. **Can I delete my data?** Yes. Use the data deletion request page. *(response time: «PH:deletion_sla»)*
+5. **Will this get me an interview or a job?** We can't promise that. Scoutly helps you write good emails and reach the right people. Replies are up to them.
 
 ## 10. Closing call and waitlist
 
@@ -163,5 +166,7 @@ Every placeholder is rendered visibly in preview builds (as `«PH:key»`) and **
 | `data_processors` | Names of the services that process data for Scoutly (privacy page) |
 | `governing_law` | Governing law and courts (terms page) |
 | `effective_date` | Effective date shown on legal pages |
+| `gmail_storage_details` | Storage and protection details for Google user data beyond "the token is stored encrypted" (privacy page) |
+| `reply_text_to_llm_provider` | Yes or no: does reply text go to the language model provider (privacy page) |
 
 Not decided and **must not be invented anywhere**: pricing, launch date, number of users, success rates, testimonials, partner companies, funding.

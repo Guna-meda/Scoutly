@@ -7,7 +7,7 @@ Next.js App Router, TypeScript strict, static prerender for every page by defaul
 | Route | Page | Notes |
 |---|---|---|
 | `/` | Home | Sections 1 to 11 below |
-| `/privacy` | Privacy policy | DPDP-aware. Draft, pending lawyer review |
+| `/privacy` | Privacy policy | DPDP-aware, with a "Google user data" section (`#google-user-data`). Draft, pending lawyer review |
 | `/terms` | Terms | Draft, pending lawyer review |
 | `/cookies` | Cookie preferences | Shows the consent state and lets users change it |
 | `/data-deletion` | Data deletion request | Form (email, what to delete). Same API protections as the waitlist |
@@ -20,10 +20,11 @@ Legal pages carry a visible banner: "Draft, pending lawyer review." Do not prese
 
 ## 2. Home page sections (order)
 
-1. **Top bar**: mark, How it works, Privacy, FAQ, Start on WhatsApp. Sticky, never overlaps the stage. Hides on scroll down, returns on scroll up.
+1. **Top bar**: mark, How it works, FAQ, Privacy, Terms, Contact (mailto), Start on WhatsApp. The current legal page is marked `aria-current="page"`. Sticky, never overlaps the stage. Hides on scroll down, returns on scroll up.
 2. **Hero**: H1, lead, primary button, "No emails sent without your SEND", looping sample device.
 3. **Feature row**: Simple, Specific, Yours. Each card is a link that jumps to its beat.
 4. **Pinned stage**: see MOTION.md and DESIGN_SYSTEM.md section 7.
+   - **How Scoutly uses your Gmail** (`#gmail`) follows the stage, with a body link to `/privacy#google-user-data`.
 5. **Replies come to you** (optional, flag `repliesBeat`, default on).
 6. **How Scoutly finds the right person**: sticky heading plus five steps.
 7. **What an email looks like**: good against typical.

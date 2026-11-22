@@ -2,7 +2,7 @@
 
 Run `pnpm check:launch` in `apps/site`. It fails while any `«PH:key»` remains, while `NEXT_PUBLIC_WHATSAPP_NUMBER` is unset, or while `scripts/links-pending.json` is non-empty (it is empty now).
 
-## Placeholders (18) and what the owner must supply
+## Placeholders (20) and what the owner must supply
 
 | Key                                                                      | Where it appears                                                                                  | Needed from the owner                                                      |
 | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
@@ -19,11 +19,14 @@ Run `pnpm check:launch` in `apps/site`. It fails while any `«PH:key»` remains,
 | `verification_method`                                                    | not rendered yet                                                                                  | Confirm how addresses are verified so step 4 of "How it finds" is accurate |
 | `retention_period`                                                       | privacy                                                                                           | How long data is kept                                                      |
 | `data_processors`                                                        | privacy                                                                                           | Services that process data for Scoutly                                     |
+| `gmail_storage_details`                                                  | privacy (Google user data)                                                                        | Storage and protection details beyond the encrypted token                  |
+| `reply_text_to_llm_provider`                                             | privacy (Google user data)                                                                        | Yes or no: does reply text go to the language model provider               |
 | `governing_law`                                                          | terms                                                                                             | Governing law and courts                                                   |
 | `effective_date`                                                         | all legal pages                                                                                   | Effective date                                                             |
 
 ## Decisions and setup still open
 
+- Google OAuth verification: follow `GOOGLE_VERIFICATION.md`.
 - Hosting and domain; set `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_ENV=production` (until then every page is noindex and robots disallows all).
 - Waitlist and deletion storage: dev store writes `.data/*.jsonl`. Production needs a real store behind `WaitlistStore` (`src/lib/waitlist-store.ts`). The rate limiter is in memory and per instance; use a shared store when running more than one instance. Set `RATE_LIMIT_SALT`.
 - Someone must read the deletion requests and act on them within the promised time.
