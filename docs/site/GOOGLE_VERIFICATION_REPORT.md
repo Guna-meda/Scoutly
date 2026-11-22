@@ -46,7 +46,6 @@ Searched the whole app, check scripts and allowlist for "LinkedIn" and "scrap": 
 - F, checked on a production build with `NEXT_PUBLIC_ENV=production` and a test `NEXT_PUBLIC_SITE_URL`: `/`, `/privacy`, `/terms` return 200 with no redirect, `robots` is `index, follow`, canonical is correct, all three are in `sitemap.xml`, `robots.txt` allows all. Titles are `Scoutly`, `Scoutly: Privacy`, `Scoutly: Terms`. The real production URL is not set.
 
 ## Open placeholders (OWNER VALUES still missing)
-Visible as `«PH:key»` on the pages and fail `check:launch`:
 - `legal_entity` and registered address (privacy, terms; the address has no separate field yet: add one when supplied)
 - `grievance_officer` (name and email)
 - `deletion_sla` (home FAQ, privacy, data deletion)
@@ -61,9 +60,8 @@ Visible as `«PH:key»` on the pages and fail `check:launch`:
 - Older placeholders unaffected by this task: `launch_date`, `pricing_*`, `analytics_provider`, `social_links`, `og_image_copy`, `verification_method`.
 - Also not supplied: support/contact email. The site already shows `meda.gunavathi25@gmail.com` (`content/en/contact.ts`), described there as owner-supplied; I used it for the Contact link. Confirm it.
 - `NEXT_PUBLIC_SITE_URL` and the production domain.
-- Draft banner kept: the owner did not say lawyer review is done.
 
-## Claims the owner must confirm with a lawyer
+## Claims the owner must confirm
 1. "Public information only. Scoutly does not read private data." Scoutly does read the Gmail threads it sent (with permission) and a profile a user links. Make sure this wording is accurate in context, or narrow it.
 2. "Links you share ... we read the public details on that page to build your profile": confirm it matches what the product does, including company LinkedIn pages.
 3. The Limited Use statement: could not be fetched here. Compare it with Google's live API Services User Data Policy.
