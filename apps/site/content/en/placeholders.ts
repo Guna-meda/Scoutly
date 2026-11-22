@@ -21,4 +21,6 @@ export const placeholders = placeholdersSchema.parse({
   data_processors: ph('data_processors'),
   governing_law: ph('governing_law'),
   effective_date: ph('effective_date'),
+  gmail_storage_details: ph('gmail_storage_details'),
+  reply_text_to_llm_provider: ph('reply_text_to_llm_provider'),
 });

@@ -5,6 +5,7 @@ import { Container } from '../layout/Container';
 import { Button } from '../ui/Button';
 import { Icon } from '../ui/Icon';
 import { Mark } from '../ui/Mark';
+import { NavLink } from './NavLink';
 
 /**
  * Sticky top bar. Server-rendered. Behaviour (hide on scroll down) lives in HeaderBehavior and the
@@ -15,9 +16,7 @@ export function Header() {
   const wa = getWhatsAppLink();
   const links = nav.items.map((item) => (
     <li key={item.href}>
-      <Link href={item.href} className="nav-link">
-        {item.label}
-      </Link>
+      <NavLink href={item.href} label={item.label} />
     </li>
   ));
   const cta = (className?: string) => (

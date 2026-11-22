@@ -19,6 +19,8 @@ export const placeholderKeys = [
   'data_processors',
   'governing_law',
   'effective_date',
+  'gmail_storage_details',
+  'reply_text_to_llm_provider',
 ] as const;
 
 export type PlaceholderKey = (typeof placeholderKeys)[number];
@@ -30,7 +32,13 @@ export const globalSchema = z.object({
   homeLinkLabel: nonEmpty,
   primaryButton: nonEmpty,
   secondaryButton: nonEmpty,
-  nav: z.object({ howItWorks: nonEmpty, privacy: nonEmpty, faq: nonEmpty }),
+  nav: z.object({
+    howItWorks: nonEmpty,
+    faq: nonEmpty,
+    privacy: nonEmpty,
+    terms: nonEmpty,
+    contact: nonEmpty,
+  }),
   mainNavLabel: nonEmpty,
   menu: z.object({ label: nonEmpty, panelLabel: nonEmpty }),
   helpLabel: nonEmpty,
@@ -123,6 +131,8 @@ export const placeholdersSchema = z.object({
   data_processors: nonEmpty,
   governing_law: nonEmpty,
   effective_date: nonEmpty,
+  gmail_storage_details: nonEmpty,
+  reply_text_to_llm_provider: nonEmpty,
 });
 
 const match = z.object({

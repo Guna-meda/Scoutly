@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { legalCommon, type LegalDoc } from '@content/en';
+import { legalCommon, type LegalBody, type LegalDoc } from '@content/en';
 import { Section } from '../layout/Section';
 import { Body, BodyL, H2, H3 } from '../ui/Text';
 import type { ReactNode } from 'react';
@@ -19,22 +19,17 @@ export function LegalPage({ doc, children }: { doc: LegalDoc; children?: ReactNo
         {doc.intro}
       </BodyL>
       {doc.sections.map((s) => (
-        <section key={s.heading} className="legal-section">
+        <section key={s.heading} id={s.id} className="legal-section">
           <H3 as="h2">{s.heading}</H3>
-          {s.paragraphs?.map((p) => (
-            <Body as="p" key={p}>
-              <Placeholdered text={p} />
-            </Body>
+          <LegalBlocks body={s} />
+          {s.subsections?.map((sub) => (
+            <div key={sub.heading} className="legal-sub">
+              <H3 as="h3" className="legal-sub-h">
+                {sub.heading}
+              </H3>
+              <LegalBlocks body={sub} />
+            </div>
           ))}
-          {s.bullets ? (
-            <ul className="legal-list">
-              {s.bullets.map((b) => (
-                <li key={b} className="t-body">
-                  {b}
-                </li>
-              ))}
-            </ul>
-          ) : null}
         </section>
       ))}
       {children}
@@ -44,6 +39,34 @@ export function LegalPage({ doc, children }: { doc: LegalDoc; children?: ReactNo
         </Link>
       </p>
     </Section>
+  );
+}
+
+function LegalBlocks({ body }: { body: LegalBody }) {
+  return (
+    <>
+      {body.paragraphs?.map((p) => (
+        <Body as="p" key={p}>
+          <Placeholdered text={p} />
+        </Body>
+      ))}
+      {body.bullets ? (
+        <ul className="legal-list">
+          {body.bullets.map((b) => (
+            <li key={b} className="t-body">
+              <Placeholdered text={b} />
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {body.links?.map((l) => (
+        <Body as="p" key={l.href}>
+          <a href={l.href} className="footer-link" rel="noopener noreferrer">
+            {l.label}
+          </a>
+        </Body>
+      ))}
+    </>
   );
 }
 
