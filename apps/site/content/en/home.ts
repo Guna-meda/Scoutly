@@ -93,8 +93,8 @@ export const control = {
     },
     { title: 'It sends from your Gmail.', body: 'Replies come straight to you.' },
     {
-      title: 'Public sources only.',
-      body: 'No scraping of private data and no LinkedIn scraping.',
+      title: 'Public information only.',
+      body: 'Scoutly does not read private data.',
     },
     {
       title: 'It stops when it should.',
@@ -106,6 +106,29 @@ export const control = {
     },
     { title: 'Nothing invented.', body: 'Every claim comes from facts you confirmed.' },
   ],
+} as const;
+
+export const gmail = {
+  heading: 'How Scoutly uses your Gmail',
+  intro:
+    'Scoutly connects to your Gmail only when you choose to. It asks Google for two permissions:',
+  permissions: [
+    {
+      title: 'Send',
+      body: 'To send the emails you approved, from your own account.',
+    },
+    {
+      title: 'Read, for Scoutly’s own threads',
+      body: 'Read-only access, used only for the email threads Scoutly itself sent. This lets Scoutly tell when someone replies, an email bounces or someone opts out, so it can stop follow-ups.',
+    },
+  ],
+  points: [
+    'Scoutly does not read any other mail.',
+    'Scoutly does not use your Gmail data for advertising and does not sell it.',
+    'You can disconnect at any time.',
+  ],
+  linkText: 'Read how we handle Google user data in the privacy policy',
+  linkHref: '/privacy#google-user-data',
 } as const;
 
 export const pricing = {
@@ -121,10 +144,6 @@ export const faq = {
     {
       q: 'Will Scoutly send emails without asking me?',
       a: 'No. You see the exact draft first. Nothing is sent until you reply SEND. You can also EDIT or DISCARD.',
-    },
-    {
-      q: 'Do you scrape LinkedIn?',
-      a: 'No. Scoutly uses public sources only and does not scrape LinkedIn or private data.',
     },
     {
       q: 'What if a founder says stop?',

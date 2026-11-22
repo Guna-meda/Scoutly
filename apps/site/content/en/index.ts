@@ -10,4 +10,4 @@ export { ph, isPlaceholderValue } from './ph';
 export * from './schema';
 export * from './home';
 export { privacy, terms, security, cookies, legalCommon, dataDeletionPage } from './legal';
-export type { LegalDoc, LegalSection } from './legal';
+export type { LegalDoc, LegalSection, LegalBody, LegalLink } from './legal';
