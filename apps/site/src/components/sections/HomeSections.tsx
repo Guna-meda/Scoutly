@@ -5,6 +5,7 @@ import {
   faq,
   features,
   find,
+  gmail,
   global,
   hero,
   join,
@@ -145,6 +146,37 @@ export function ControlSection() {
           </li>
         ))}
       </ul>
+    </Section>
+  );
+}
+
+export function GmailSection() {
+  return (
+    <Section id="gmail" labelledBy="gmail-h">
+      <H2 id="gmail-h">{gmail.heading}</H2>
+      <BodyL as="p">{gmail.intro}</BodyL>
+      <ul className="control-grid">
+        {gmail.permissions.map((p) => (
+          <li key={p.title} className="control-card">
+            <H3 as="h3" className="control-title">
+              {p.title}
+            </H3>
+            <Body as="p">{p.body}</Body>
+          </li>
+        ))}
+      </ul>
+      <ul className="legal-list gmail-points">
+        {gmail.points.map((point) => (
+          <li key={point} className="t-body">
+            {point}
+          </li>
+        ))}
+      </ul>
+      <Body as="p" className="control-link">
+        <Link href={gmail.linkHref} className="footer-link">
+          {gmail.linkText}
+        </Link>
+      </Body>
     </Section>
   );
 }

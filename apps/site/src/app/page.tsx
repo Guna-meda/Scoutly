@@ -7,6 +7,7 @@ import {
   FaqSection,
   FeatureRow,
   FindSection,
+  GmailSection,
   Hero,
   JoinSection,
   PricingSection,
@@ -30,6 +31,7 @@ export default function HomePage() {
       <Hero />
       <FeatureRow />
       <StageSection />
+      <GmailSection />
       <TeamsSection />
       <FindSection />
       <EmailSection />
