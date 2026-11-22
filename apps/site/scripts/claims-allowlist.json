@@ -1,4 +1,4 @@
 {
-  "_comment": "Exact matched strings (case-insensitive, whitespace-normalised) that are allowed by check-claims. Add only with owner approval.",
+  "_comment": "Exact matched strings (case-insensitive, whitespace-normalised) that are allowed by check-claims. Add only with owner approval. Never add scraping or LinkedIn claims here: check-claims bans them outright.",
   "allow": []
 }
