@@ -8,7 +8,7 @@ export function organizationJsonLd() {
     '@type': 'Organization',
     name: global.siteName,
     url: siteUrl,
-    logo: `${siteUrl}/icon.svg`,
+    logo: `${siteUrl}/scoutly-logo-512.png`,
   };
 }
 
