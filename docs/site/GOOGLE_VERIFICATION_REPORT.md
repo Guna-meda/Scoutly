@@ -5,8 +5,8 @@ Branch work, not pushed, not deployed. Companion guide: `GOOGLE_VERIFICATION.md`
 ## What changed, by file (`apps/site` unless noted)
 
 **A. Navbar**
-- `content/en/schema.ts`, `content/en/global.ts`: nav labels are now How it works, FAQ, Privacy, Terms, Contact.
-- `content/en/nav.ts`: five items; Contact is `mailto:` the contact email (from `content/en/contact.ts`).
+- `content/en/schema.ts`, `content/en/global.ts`: nav labels are now How it works, FAQ, Contact.
+- `content/en/nav.ts`: three items (How it works, FAQ, Contact); Privacy and Terms moved to the footer. Contact is `mailto:` the contact email (from `content/en/contact.ts`).
 - `src/components/shell/NavLink.tsx` (new), `Header.tsx`: shared by the header and the phone menu; current page gets `aria-current="page"`.
 - `src/styles/components.css`: active-page style. `MobileMenu.tsx` unchanged (it already works on whatever links the panel holds).
 - `scripts/links-pending.json`: unchanged and still empty: every nav target exists (`#how-it-works`, `#faq`, `/privacy`, `/terms`), and mailto is not crawled.
@@ -76,4 +76,4 @@ Searched the whole app, check scripts and allowlist for "LinkedIn" and "scrap": 
 ## Other things the owner needs to know
 - The deletion form writes to a local file store (`.data/*.jsonl`) and a person must act on requests. It needs a production store (`WaitlistStore` in `src/lib/waitlist-store.ts`) and someone to act within the promised time. I did not build this.
 - `gmail.readonly` is a restricted scope: the public launch needs Google's security assessment (see `GOOGLE_VERIFICATION.md`, section 5).
-- The phone menu was checked by e2e (keyboard, Esc, focus return, same five items), not on a real device or screen reader.
+- The phone menu was checked by e2e (keyboard, Esc, focus return, same three items), not on a real device or screen reader.

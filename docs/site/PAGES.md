@@ -20,7 +20,7 @@ Legal pages carry a visible banner: "Draft, pending lawyer review." Do not prese
 
 ## 2. Home page sections (order)
 
-1. **Top bar**: mark, How it works, FAQ, Privacy, Terms, Contact (mailto), Start on WhatsApp. The current legal page is marked `aria-current="page"`. Sticky, never overlaps the stage. Hides on scroll down, returns on scroll up.
+1. **Top bar**: mark, How it works, FAQ, Contact (mailto), Start on WhatsApp. Privacy and Terms are in the footer. Sticky, never overlaps the stage. Hides on scroll down, returns on scroll up.
 2. **Hero**: H1, lead, primary button, "No emails sent without your SEND", looping sample device.
 3. **Feature row**: Simple, Specific, Yours. Each card is a link that jumps to its beat.
 4. **Pinned stage**: see MOTION.md and DESIGN_SYSTEM.md section 7.

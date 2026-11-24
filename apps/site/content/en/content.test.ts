@@ -30,12 +30,10 @@ describe('content', () => {
     expect(global.primaryButton).toBe('Start on WhatsApp');
     expect(hero.h1).toBe('Find the startup. Write the email. You press SEND.');
   });
-  it('nav lists the five items in order, Contact is a mailto link', () => {
+  it('nav lists the three items in order, Contact is a mailto link', () => {
     expect(nav.items).toEqual([
       { label: 'How it works', href: '/#how-it-works' },
       { label: 'FAQ', href: '/#faq' },
-      { label: 'Privacy', href: '/privacy' },
-      { label: 'Terms', href: '/terms' },
       { label: 'Contact', href: `mailto:${CONTACT_EMAIL}` },
     ]);
   });
