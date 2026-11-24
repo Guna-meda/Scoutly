@@ -8,8 +8,6 @@ export const global = globalSchema.parse({
   nav: {
     howItWorks: 'How it works',
     faq: 'FAQ',
-    privacy: 'Privacy',
-    terms: 'Terms',
     contact: 'Contact',
   },
   mainNavLabel: 'Main',

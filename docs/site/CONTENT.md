@@ -18,7 +18,7 @@ Status: **draft copy for owner review.** Every line follows the voice rules belo
 - Site name: Scoutly
 - Primary button: **Start on WhatsApp** (links to `wa.me/«PH:whatsapp_number»?text=Hi`)
 - Secondary: **Join the waitlist**
-- Nav (header and phone menu): How it works · FAQ · Privacy · Terms · Contact (mailto the contact email)
+- Nav (header and phone menu): How it works · FAQ · Contact (mailto the contact email). Privacy and Terms are in the footer.
 - Footer disclaimer: **Scoutly is not affiliated with WhatsApp or Meta.**
 - Footer draft-law note (legal pages only): *Draft, pending lawyer review.*
 

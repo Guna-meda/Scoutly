@@ -35,8 +35,6 @@ export const globalSchema = z.object({
   nav: z.object({
     howItWorks: nonEmpty,
     faq: nonEmpty,
-    privacy: nonEmpty,
-    terms: nonEmpty,
     contact: nonEmpty,
   }),
   mainNavLabel: nonEmpty,

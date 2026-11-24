@@ -38,23 +38,25 @@ test('no horizontal scroll at 375 and 320', async ({ page }) => {
   }
 });
 
-const navLabels = ['How it works', 'FAQ', 'Privacy', 'Terms', 'Contact'];
+const navLabels = ['How it works', 'FAQ', 'Contact'];
 
-test('desktop header has the five items and marks the current page', async ({ page }) => {
+test('desktop header has the three items; Privacy and Terms are in the footer', async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1280, height: 800 });
-  await page.goto('/privacy');
+  await page.goto('/');
   const links = page.locator('nav.nav-inline a');
   await expect(links).toHaveText(navLabels);
-  await expect(links.nth(4)).toHaveAttribute('href', /^mailto:/);
-  await expect(page.locator('nav.nav-inline a[aria-current="page"]')).toHaveText('Privacy');
+  await expect(links.nth(2)).toHaveAttribute('href', /^mailto:/);
+  await expect(page.locator('footer a[href="/privacy"]')).toBeVisible();
+  await expect(page.locator('footer a[href="/terms"]')).toBeVisible();
 });
 
-test('phone menu has the same five items and keeps Tab inside page order', async ({ page }) => {
+test('phone menu has the same three items', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 700 });
-  await page.goto('/terms');
+  await page.goto('/');
   await page.locator('#mobile-menu > summary').click();
   const links = page.locator('#mobile-menu .menu-panel nav a');
   await expect(links).toHaveText(navLabels);
-  await expect(page.locator('#mobile-menu a[aria-current="page"]')).toHaveText('Terms');
   await expect(page.locator('#mobile-menu nav')).toHaveAttribute('aria-label', 'Main');
 });
